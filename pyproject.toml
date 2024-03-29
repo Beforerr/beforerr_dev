@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beforerr"
+version = "0.0.1"  # Replace with actual version
+
+[project.optional-dependencies]
+r = [
+  "rpy2",
+  "rpy2_arrow"
+]
+
+[tool.setuptools]
+packages = [ "beforerr"]

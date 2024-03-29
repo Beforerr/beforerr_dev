@@ -1,0 +1,13 @@
+# mamba env create --file environment.yml
+# mamba env update --file environment.yml
+# conda activate cool_cool
+name: cool_cool
+channels:
+  - conda-forge
+dependencies:
+  - jupyter
+  - fastai::nbdev
+  - fastai::fastcore
+  - pip
+  - pip:
+    -  pipe

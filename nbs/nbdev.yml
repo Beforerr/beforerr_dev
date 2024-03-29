@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "beforerr"
+  site-url: "https://Beforerr.github.io/beforerr"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/Beforerr/beforerr"
