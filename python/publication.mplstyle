@@ -1,0 +1,8 @@
+# Matplotlib style for publication
+
+savefig.transparent: True
+pdf.fonttype: 42
+svg.fonttype: none
+
+# plt.rc('savefig', dpi=300, transparent=True)
+# plt.rc('svg', fonttype='none')
