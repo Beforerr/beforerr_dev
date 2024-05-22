@@ -5,4 +5,5 @@ website:
       - 00_core.ipynb
       - 01_basics.ipynb
       - 02_r.ipynb
+      - 03_matplotlib.ipynb
       - 10_polars.ipynb
