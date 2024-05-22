@@ -2,8 +2,8 @@ project:
   output-dir: _docs
 
 website:
-  title: "beforerr"
-  site-url: "https://Beforerr.github.io/beforerr"
+  title: "beforerr_dev"
+  site-url: "https://Beforerr.github.io/beforerr_dev"
   description: ""
   repo-branch: main
-  repo-url: "https://github.com/Beforerr/beforerr"
+  repo-url: "https://github.com/Beforerr/beforerr_dev"

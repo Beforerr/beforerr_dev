@@ -5,7 +5,6 @@ project:
   output-dir: _docs
   preview:
     port: 3000
-    browser: false
 
 format:
   html:
@@ -16,19 +15,13 @@ format:
 
 website:
   title: "beforerr"
-  site-url: "https://Beforerr.github.io/beforerr"
-  description: ""
-  twitter-card: true
-  open-graph: true
-  repo-branch: main
-  repo-url: "https://github.com/Beforerr/beforerr"
   repo-actions: [issue]
   navbar:
     background: primary
     search: true
     right:
       - icon: github
-        href: "https://github.com/Beforerr/beforerr"
+        href: "https://github.com/Beforerr/beforerr_dev"
   sidebar:
     style: "floating"
 
