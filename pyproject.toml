@@ -22,6 +22,9 @@ platforms = ["osx-arm64"]
 
 [tool.pixi.pypi-dependencies]
 beforerr = { path = ".", editable = true }
+rpy2 = "*"
+rpy2-arrow = "*"
+pipe = "*"
 
 [tool.pixi.tasks]
 
@@ -29,3 +32,6 @@ beforerr = { path = ".", editable = true }
 nbdev = "*"
 matplotlib = "*"
 ipykernel = "*"
+polars = "*"
+# rpy2 = "*"
+# r-arrow = "*"
