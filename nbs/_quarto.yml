@@ -1,8 +1,5 @@
-ipynb-filters: [nbdev_filter]
-
 project:
   type: website
-  output-dir: _docs
   preview:
     port: 3000
 
@@ -14,7 +11,6 @@ format:
     toc-depth: 4
 
 website:
-  title: "beforerr"
   repo-actions: [issue]
   navbar:
     background: primary
@@ -27,4 +23,4 @@ website:
 
 metadata-files: 
   - sidebar.yml
-  - custom.yml
+  - nbdev.yml
