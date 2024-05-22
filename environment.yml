@@ -1,6 +1,3 @@
-# mamba env create --file environment.yml
-# mamba env update --file environment.yml
-# conda activate cool_cool
 name: cool_cool
 channels:
   - conda-forge
@@ -11,3 +8,4 @@ dependencies:
   - pip
   - pip:
     -  pipe
+    - .
