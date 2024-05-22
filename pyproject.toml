@@ -2,7 +2,7 @@
 name = "beforerr"
 version = "0.1.0"
 description = "Add a short description here"
-authors = [{name = "Beforerr", email = "zzj956959688@gmail.com"}]
+authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
 dependencies = []
 
@@ -10,8 +10,11 @@ dependencies = []
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[project.optional-dependencies]
+r = ["rpy2", "rpy2_arrow"]
+
 [tool.setuptools]
-packages = [ "beforerr"]
+packages = ["beforerr"]
 
 [tool.pixi.project]
 channels = ["conda-forge"]
@@ -23,6 +26,6 @@ beforerr = { path = ".", editable = true }
 [tool.pixi.tasks]
 
 [tool.pixi.dependencies]
-nbdev = ">=2.2.10,<2.3"
-matplotlib = ">=3.8.4,<3.9"
-ipykernel = ">=6.29.3,<6.30"
+nbdev = "*"
+matplotlib = "*"
+ipykernel = "*"

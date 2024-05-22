@@ -164,7 +164,10 @@ packages:
   name: beforerr
   version: 0.1.0
   path: .
-  sha256: ddeced6fa3785a3804e40edc13e0793a12b9a84d3781c45844d0f80239959e65
+  sha256: 27971bdeb0c772f643d7b6b900b3f52a000378b049037ef09963f30fd98878e5
+  requires_dist:
+  - rpy2 ; extra == 'r'
+  - rpy2-arrow ; extra == 'r'
   requires_python: '>=3.10'
   editable: true
 - kind: conda
