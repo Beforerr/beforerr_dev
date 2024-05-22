@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "beforerr",
     "section": "",
-    "text": "::: {#cell-1 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\n:::\nPython utils for different packages. Mainly developed by nbdev.",
+    "text": "Python utils for different packages. Mainly developed by nbdev.",
     "crumbs": [
       "beforerr"
     ]
@@ -34,29 +34,19 @@
     "href": "02_r.html",
     "title": "R utils",
     "section": "",
-    "text": "Utils for using R with python in Jupyter\nYou need to install depending package with pip install rpy2 rpy2-arrow\nSee rpy2 for more details and rp2-arrow for arrow support.\nTODO: support polars LazyFrame.\n::: {#cell-3 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\nimport rpy2\nimport rpy2_arrow.arrow as pyra\nfrom rpy2.robjects.packages import importr\nimport polars as pl\n:::\n::: {#cell-4 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef py2rpy_polars():\n    \"Helper functions to convert between `polars` and `R` dataframes\"\n    base = importr('base')\n\n    conv_pl = rpy2.robjects.conversion.Converter(\n        'Polars to pyarrow',\n        template=pyra.converter)\n\n    @conv_pl.py2rpy.register(pl.DataFrame)\n    def py2rpy_pandas(dataf: pl.DataFrame):\n        pa_tbl = dataf.to_arrow()\n        return base.as_data_frame(pa_tbl)\n        # return pyra.converter.py2rpy(pa_tbl) # NOTE: not working for ggplot2\n\n    conv_pl = rpy2.ipython.rmagic.converter + conv_pl\n    return conv_pl\n:::\nHere is how you can use it, remember to load the extension first:\n%load_ext rpy2.ipython\nfrom ids_finder.utils.r import py2rpy_polars\nconv_pl = py2rpy_polars()\nThen you can use it like this to export a dataframe df to R:\n%R -i df -c conv_pl\n::: {#cell-6 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\ndf = pl.DataFrame({\n    'a': [1, 2, 3],\n    'b': [4, 5, 6],\n    'c': ['a', 'b', 'c']\n})\n\n%load_ext rpy2.ipython\nconv_pl = py2rpy_polars()\n\n%R print(df)\n:::",
+    "text": "Utils for using R with python in Jupyter\nYou need to install depending package with pip install rpy2 rpy2-arrow\nSee rpy2 for more details and rp2-arrow for arrow support.\nTODO: support polars LazyFrame.\n\n\npy2rpy_polars\n\n py2rpy_polars ()\n\nHelper functions to convert between polars and R dataframes\nHere is how you can use it, remember to load the extension first:\n%load_ext rpy2.ipython\nfrom ids_finder.utils.r import py2rpy_polars\nconv_pl = py2rpy_polars()\nThen you can use it like this to export a dataframe df to R:\n%R -i df -c conv_pl",
     "crumbs": [
       "`R` utils"
     ]
   },
   {
-    "objectID": "00_core.html",
-    "href": "00_core.html",
+    "objectID": "core.html",
+    "href": "core.html",
     "title": "core",
     "section": "",
-    "text": "Fill in a module description here\n\n::: {#cell-3 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nfrom nbdev.showdoc import *\n:::\n::: {#cell-4 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef foo(): pass\n:::\n::: {#cell-5 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nimport nbdev; nbdev.nbdev_export()\n:::",
+    "text": "foo\n\n foo ()",
     "crumbs": [
       "core"
-    ]
-  },
-  {
-    "objectID": "10_polars.html",
-    "href": "10_polars.html",
-    "title": "Utils for Polars",
-    "section": "",
-    "text": "::: {#cell-2 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\n:::\n::: {#cell-3 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\n:::",
-    "crumbs": [
-      "Utils for Polars"
     ]
   },
   {
@@ -64,7 +54,7 @@
     "href": "10_polars.html#io",
     "title": "Utils for Polars",
     "section": "IO",
-    "text": "IO\n::: {#cell-5 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef convert_to_pd_dataframe(\n    df: pl.DataFrame | pl.LazyFrame, # original DataFrame or LazyFrame\n):\n    \"\"\"\n    Convert a Polars DataFrame or LazyFrame into a pandas-like DataFrame.\n    \"\"\"\n    if isinstance(df, pl.LazyFrame):\n        df = df.collect()\n    elif not isinstance(df, pl.DataFrame):\n        raise TypeError(\"Input must be a Polars DataFrame or LazyFrame\")\n\n    data = df.to_pandas(use_pyarrow_extension_array=True)\n\n    return data\n:::",
+    "text": "IO\n\n\nconvert_to_pd_dataframe\n\n convert_to_pd_dataframe\n                          (df:polars.dataframe.frame.DataFrame|polars.lazy\n                          frame.frame.LazyFrame)\n\nConvert a Polars DataFrame or LazyFrame into a pandas-like DataFrame.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\ndf\npolars.dataframe.frame.DataFrame | polars.lazyframe.frame.LazyFrame\noriginal DataFrame or LazyFrame",
     "crumbs": [
       "Utils for Polars"
     ]
@@ -74,7 +64,7 @@
     "href": "10_polars.html#functions",
     "title": "Utils for Polars",
     "section": "Functions",
-    "text": "Functions\n::: {#cell-7 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef sort(df: pl.DataFrame, col=\"time\"):\n    if df.get_column(col).is_sorted():\n        return df.set_sorted(col)\n    else:\n        return df.sort(col)\n:::\n::: {#cell-8 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef _expand_selectors(items: Any, *more_items: Any) -&gt; list[Any]:\n    \"\"\"\n    See `_expand_selectors` in `polars`.\n    \"\"\"\n    expanded: list[Any] = []\n    for item in (\n        *(\n            items\n            if isinstance(items, Collection) and not isinstance(items, str)\n            else [items]\n        ),\n        *more_items,\n    ):\n        expanded.append(item)\n    return expanded\n:::\n::: {#cell-9 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef pl_norm(columns, *more_columns) -&gt; pl.Expr:\n    \"\"\"\n    Computes the square root of the sum of squares for the given columns.\n\n    Args:\n    *columns (str): Names of the columns.\n\n    Returns:\n    pl.Expr: Expression representing the square root of the sum of squares.\n    \"\"\"\n    all_columns = _expand_selectors(columns, *more_columns)\n    squares = [pl.col(column).pow(2) for column in all_columns]\n\n    return sum(squares).sqrt()\n:::\n::: {#cell-10 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef decompose_vector(df: pl.LazyFrame, vector_col, name=None):\n    if name is None:\n        name = vector_col\n\n    return df.with_columns(\n        pl.col(vector_col).list.get(0).alias(f\"{name}_x\"),\n        pl.col(vector_col).list.get(1).alias(f\"{name}_y\"),\n        pl.col(vector_col).list.get(2).alias(f\"{name}_z\"),\n    )\n:::",
+    "text": "Functions\n\n\nsort\n\n sort (df:polars.dataframe.frame.DataFrame, col='time')\n\n\n\n\npl_norm\n\n pl_norm (columns, *more_columns)\n\n*Computes the square root of the sum of squares for the given columns.\nArgs: *columns (str): Names of the columns.\nReturns: pl.Expr: Expression representing the square root of the sum of squares.*\n\n\n\ndecompose_vector\n\n decompose_vector (df:polars.lazyframe.frame.LazyFrame, vector_col,\n                   name=None)",
     "crumbs": [
       "Utils for Polars"
     ]
@@ -84,7 +74,7 @@
     "href": "01_basics.html",
     "title": "Basic functionality",
     "section": "",
-    "text": "::: {#cell-2 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\nfrom pipe import select\nfrom fastcore.utils import partial\n:::\n::: {#cell-3 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef pmap(func, *args, **kwargs):\n    \"\"\"\n    map with `partial`\n    \"\"\"\n    return select(partial(func, *args, **kwargs))\n:::\n::: {#cell-4 .cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nimport nbdev\nnbdev.nbdev_export()\n:::",
+    "text": "pmap\n\n pmap (func, *args, **kwargs)\n\nmap with partial",
     "crumbs": [
       "Basic functionality"
     ]
