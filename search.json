@@ -40,6 +40,16 @@
     ]
   },
   {
+    "objectID": "03_matplotlib.html",
+    "href": "03_matplotlib.html",
+    "title": "Utils for Matplotlib",
+    "section": "",
+    "text": "unify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\nstring values denote sizes relative to the default font size",
+    "crumbs": [
+      "Utils for Matplotlib"
+    ]
+  },
+  {
     "objectID": "core.html",
     "href": "core.html",
     "title": "core",
