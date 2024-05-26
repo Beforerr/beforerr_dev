@@ -4,11 +4,11 @@ version = "0.1.0"
 description = "Add a short description here"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
-dependencies = []
+dependencies = ["loguru"]
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
 [project.optional-dependencies]
 r = ["rpy2", "rpy2_arrow"]
