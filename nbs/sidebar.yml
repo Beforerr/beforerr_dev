@@ -7,3 +7,4 @@ website:
       - 02_r.ipynb
       - 03_matplotlib.ipynb
       - 10_polars.ipynb
+      - 11_projects.ipynb
