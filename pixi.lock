@@ -166,7 +166,7 @@ packages:
   name: beforerr
   version: 0.1.0
   path: .
-  sha256: faf27f672565e45d9a682004d56e594e687dd370a8eb630abbb5786db6c5939c
+  sha256: f4361bfb8a2d6ae04aba3aaddadd87dfb6bb2af008e83c46d5466c2c30163060
   requires_dist:
   - loguru
   - rpy2 ; extra == 'r'
