@@ -10,13 +10,3 @@ Python utils for different packages. Mainly developed by `nbdev`.
 ``` sh
 pip install beforerr
 ```
-
-## How to use
-
-Fill me in please! Don’t forget code examples:
-
-``` python
-1+1
-```
-
-    2

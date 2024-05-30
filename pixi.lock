@@ -100,7 +100,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/2b/03/13dde6512ad7b4557eb792fbcf0c653af6076b81e5941d36ec61f7ce6028/astunparse-1.6.3-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b4/f6/b28d2bfb5fca9e8f9afc9d05eae245bed9f6ba5c2897fefee7a9abeaf091/cffi-1.16.0-cp312-cp312-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/fb/c2/f2bf7d821f04556efde49a1af531bdf287b27c19225852287cbfca953300/execnb-0.1.6-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/c3/75/424bf498118a6f7784233bea274b48c00207373690947f4e6ede4ef24ec8/fastcore-1.5.38-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/29/84/b2ebc7995de28820db780afb13c0045bbe25ce7d5e130c09f548440ae708/fastcore-1.5.42-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/71/6c/2913287a13bc1a5233836d66c3efd6d7bd7d6625fb37c31d36429dec44a4/ghapi-1.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/31/80/3a54838c3fb461f6fec263ebf3a3a41771bd05190238de3486aae8540c36/jinja2-3.1.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/03/0a/4f6fed21aa246c6b49b561ca55facacc2a44b87d65b8b92362a8e99ba202/loguru-0.7.2-py3-none-any.whl
@@ -166,8 +166,9 @@ packages:
   name: beforerr
   version: 0.1.0
   path: .
-  sha256: f4361bfb8a2d6ae04aba3aaddadd87dfb6bb2af008e83c46d5466c2c30163060
+  sha256: d9b3cd190237cf61781f66a6006d670d71559a8cea49d58e00c1ce7a9e1c6ec2
   requires_dist:
+  - pipe
   - loguru
   - rpy2 ; extra == 'r'
   - rpy2-arrow ; extra == 'r'
@@ -393,9 +394,9 @@ packages:
   timestamp: 1698580072627
 - kind: pypi
   name: fastcore
-  version: 1.5.38
-  url: https://files.pythonhosted.org/packages/c3/75/424bf498118a6f7784233bea274b48c00207373690947f4e6ede4ef24ec8/fastcore-1.5.38-py3-none-any.whl
-  sha256: 327f011613c986e7f627f63d1d9993c8d6de116c586df94d85806fbfbe45e52a
+  version: 1.5.42
+  url: https://files.pythonhosted.org/packages/29/84/b2ebc7995de28820db780afb13c0045bbe25ce7d5e130c09f548440ae708/fastcore-1.5.42-py3-none-any.whl
+  sha256: 9f749a7aa4aeff37446bf114edafcac277ffb12cfef29f8219d5928b447e5486
   requires_dist:
   - packaging
   - numpy ; extra == 'dev'

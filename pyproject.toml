@@ -1,10 +1,10 @@
 [project]
 name = "beforerr"
 version = "0.1.0"
-description = "Add a short description here"
+description = "Personal Python utility library"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
-dependencies = ["loguru"]
+dependencies = ["pipe", "loguru"]
 
 [build-system]
 requires = ["pdm-backend"]
@@ -26,7 +26,6 @@ nbdev = "*"
 setuptools = "*"
 rpy2 = "*"
 rpy2-arrow = "*"
-pipe = "*"
 
 [tool.pixi.tasks]
 
