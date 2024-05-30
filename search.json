@@ -30,13 +30,23 @@
     ]
   },
   {
-    "objectID": "03_matplotlib.html",
-    "href": "03_matplotlib.html",
-    "title": "Utils for Matplotlib",
+    "objectID": "11_projects.html",
+    "href": "11_projects.html",
+    "title": "Scientific project utils",
     "section": "",
-    "text": "unify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\nstring values denote sizes relative to the default font size",
+    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq\n\n\n\n\n\n datadir ()\n\n\n\n\n\n\n projectdir ()\n\n\n\n\n\n\n savename (c:Dict, prefix:str='', suffix:str='',\n           allowedtypes:Tuple=(&lt;class 'int'&gt;, &lt;class 'float'&gt;, &lt;class\n           'str'&gt;, &lt;class 'bool'&gt;), accesses:List[str]=[],\n           ignores:List[str]=[], digits:int=None, connector:str='_',\n           equals:str='=', expand:List[str]=[], sigdigits:int=3,\n           val2string:Callable=None, sort:bool=True)\n\nCreate a shorthand name based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\nDict\n\nThe input dictionary containing the parameters.\n\n\nprefix\nstr\n\nThe prefix to start the name with.\n\n\nsuffix\nstr\n\nThe suffix to end the name with.\n\n\nallowedtypes\nTuple\n(&lt;class ‘int’&gt;, &lt;class ‘float’&gt;, &lt;class ‘str’&gt;, &lt;class ‘bool’&gt;)\nOnly values of these types are included. (default: (int, float, str, bool))\n\n\naccesses\nList\n[]\nSpecific keys to include in the name.\n\n\nignores\nList\n[]\nSpecific keys to ignore.\n\n\ndigits\nint\nNone\nNumber of decimal digits for rounding floats.\n\n\nconnector\nstr\n_\nString used to connect key-value pairs.\n\n\nequals\nstr\n=\nConnector between key and value.\n\n\nexpand\nList\n[]\nKeys that will be expanded to their nested savename.\n\n\nsigdigits\nint\n3\nNumber of significant digits for rounding floats.\n\n\nval2string\nCallable\nNone\nFunction to convert values to strings.\n\n\nsort\nbool\nTrue\nWhether to sort the keys alphabetically.\n\n\nReturns\nstr\n\nThe generated shorthand name.\n\n\n\n\n# Examples\nd = {\"a\": 0.153456453, \"b\": 5, \"mode\": \"double\"}\ntest_eq(savename(d), \"a=0.153_b=5_mode=double\")\ntest_eq(savename(d, digits=4), \"a=0.1535_b=5_mode=double\")\ntest_eq(savename(d, prefix=\"n\"), \"n_a=0.153_b=5_mode=double\")\ntest_eq(savename(d, suffix=\"n\"), \"a=0.153_b=5_mode=double.n\")\ntest_eq(savename(d, prefix=\"n\", suffix=\"n\", connector=\"-\"), \"n-a=0.153-b=5-mode=double.n\")\ntest_eq(savename(d, allowedtypes=(str,)), \"mode=double\")\ntest_eq(savename(d, connector=\" | \", equals=\" = \"), \"a = 0.153 | b = 5 | mode = double\")\n\nrick = {\"never\": \"gonna\", \"give\": \"you\", \"up\": \"!\"}\ntest_eq(savename(rick), \"give=you_never=gonna_up=!\")\ntest_eq(savename(rick, ignores=[\"up\"]), \"give=you_never=gonna\")\n\n\n\n\n\n\n setup_run_dir (c:Dict, base_dir:Callable=&lt;function datadir&gt;,\n                change_dir:bool=True, **kwargs)\n\nCreate a run directory based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\nDict\n\nThe dictionary containing the parameters.\n\n\nbase_dir\nCallable\ndatadir\nThe base directory to create the run directory in.\n\n\nchange_dir\nbool\nTrue\n\n\n\nkwargs\n\n\n\n\n\nReturns\nPath\n\nThe run directory.\n\n\n\n\n\n\n\n\n safesave (filepath:pathlib.Path, data, save_func:Callable)\n\n\n# Example usage\ndata = \"Some data to be savedsss\"\nsafesave(\"test.txt\", data)",
     "crumbs": [
-      "Utils for Matplotlib"
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "11_projects.html#inspirations",
+    "href": "11_projects.html#inspirations",
+    "title": "Scientific project utils",
+    "section": "",
+    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq\n\n\n\n\n\n datadir ()\n\n\n\n\n\n\n projectdir ()\n\n\n\n\n\n\n savename (c:Dict, prefix:str='', suffix:str='',\n           allowedtypes:Tuple=(&lt;class 'int'&gt;, &lt;class 'float'&gt;, &lt;class\n           'str'&gt;, &lt;class 'bool'&gt;), accesses:List[str]=[],\n           ignores:List[str]=[], digits:int=None, connector:str='_',\n           equals:str='=', expand:List[str]=[], sigdigits:int=3,\n           val2string:Callable=None, sort:bool=True)\n\nCreate a shorthand name based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\nDict\n\nThe input dictionary containing the parameters.\n\n\nprefix\nstr\n\nThe prefix to start the name with.\n\n\nsuffix\nstr\n\nThe suffix to end the name with.\n\n\nallowedtypes\nTuple\n(&lt;class ‘int’&gt;, &lt;class ‘float’&gt;, &lt;class ‘str’&gt;, &lt;class ‘bool’&gt;)\nOnly values of these types are included. (default: (int, float, str, bool))\n\n\naccesses\nList\n[]\nSpecific keys to include in the name.\n\n\nignores\nList\n[]\nSpecific keys to ignore.\n\n\ndigits\nint\nNone\nNumber of decimal digits for rounding floats.\n\n\nconnector\nstr\n_\nString used to connect key-value pairs.\n\n\nequals\nstr\n=\nConnector between key and value.\n\n\nexpand\nList\n[]\nKeys that will be expanded to their nested savename.\n\n\nsigdigits\nint\n3\nNumber of significant digits for rounding floats.\n\n\nval2string\nCallable\nNone\nFunction to convert values to strings.\n\n\nsort\nbool\nTrue\nWhether to sort the keys alphabetically.\n\n\nReturns\nstr\n\nThe generated shorthand name.\n\n\n\n\n# Examples\nd = {\"a\": 0.153456453, \"b\": 5, \"mode\": \"double\"}\ntest_eq(savename(d), \"a=0.153_b=5_mode=double\")\ntest_eq(savename(d, digits=4), \"a=0.1535_b=5_mode=double\")\ntest_eq(savename(d, prefix=\"n\"), \"n_a=0.153_b=5_mode=double\")\ntest_eq(savename(d, suffix=\"n\"), \"a=0.153_b=5_mode=double.n\")\ntest_eq(savename(d, prefix=\"n\", suffix=\"n\", connector=\"-\"), \"n-a=0.153-b=5-mode=double.n\")\ntest_eq(savename(d, allowedtypes=(str,)), \"mode=double\")\ntest_eq(savename(d, connector=\" | \", equals=\" = \"), \"a = 0.153 | b = 5 | mode = double\")\n\nrick = {\"never\": \"gonna\", \"give\": \"you\", \"up\": \"!\"}\ntest_eq(savename(rick), \"give=you_never=gonna_up=!\")\ntest_eq(savename(rick, ignores=[\"up\"]), \"give=you_never=gonna\")\n\n\n\n\n\n\n setup_run_dir (c:Dict, base_dir:Callable=&lt;function datadir&gt;,\n                change_dir:bool=True, **kwargs)\n\nCreate a run directory based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\nDict\n\nThe dictionary containing the parameters.\n\n\nbase_dir\nCallable\ndatadir\nThe base directory to create the run directory in.\n\n\nchange_dir\nbool\nTrue\n\n\n\nkwargs\n\n\n\n\n\nReturns\nPath\n\nThe run directory.\n\n\n\n\n\n\n\n\n safesave (filepath:pathlib.Path, data, save_func:Callable)\n\n\n# Example usage\ndata = \"Some data to be savedsss\"\nsafesave(\"test.txt\", data)",
+    "crumbs": [
+      "Scientific project utils"
     ]
   },
   {
@@ -47,6 +57,16 @@
     "text": "ifnone\n\n ifnone (a, b)\n\nb if a is None else a",
     "crumbs": [
       "core"
+    ]
+  },
+  {
+    "objectID": "03_matplotlib.html",
+    "href": "03_matplotlib.html",
+    "title": "Utils for Matplotlib",
+    "section": "",
+    "text": "unify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\nstring values denote sizes relative to the default font size",
+    "crumbs": [
+      "Utils for Matplotlib"
     ]
   },
   {
