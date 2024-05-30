@@ -19,7 +19,8 @@ Homepage = "https://beforerr.github.io/beforerr_dev"
 Repository = "https://github.com/beforerr/beforerr_dev"
 
 [tool.pdm.version]
-source = "scm"
+source = "file"
+path = "beforerr/__init__.py"
 
 [tool.pixi.project]
 channels = ["conda-forge"]

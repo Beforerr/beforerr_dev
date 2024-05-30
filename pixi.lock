@@ -164,9 +164,9 @@ packages:
   - six<2.0,>=1.6.1
 - kind: pypi
   name: beforerr
-  version: 0.0.1.dev13+g209162e.d20240530
+  version: 0.1.dev17+g5a17430
   path: .
-  sha256: 32c01797a88e35235ac82acd50b61a4c343dba1594fdb2027d54c474849cf4cc
+  sha256: 17cd80248ed1b1d220a795d6eb310768fdfd898ffb52f51088180b995df59bb7
   requires_dist:
   - pipe
   - loguru
