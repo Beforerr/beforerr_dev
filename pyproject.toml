@@ -1,10 +1,11 @@
 [project]
 name = "beforerr"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Personal Python utility library"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
 dependencies = ["pipe", "loguru"]
+readme = "README.md"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -13,8 +14,12 @@ build-backend = "pdm.backend"
 [project.optional-dependencies]
 r = ["rpy2", "rpy2_arrow"]
 
-[tool.setuptools]
-packages = ["beforerr"]
+[project.urls]
+Homepage = "https://beforerr.github.io/beforerr_dev"
+Repository = "https://github.com/beforerr/beforerr_dev"
+
+[tool.pdm.version]
+source = "scm"
 
 [tool.pixi.project]
 channels = ["conda-forge"]
