@@ -75,13 +75,39 @@ def pl_norm(columns, *more_columns) -> pl.Expr:
     return sum(squares).sqrt()
 
 # %% ../nbs/10_polars.ipynb 10
-def decompose_vector(df: pl.LazyFrame, vector_col, name=None):
+def decompose_vector(
+    df: pl.DataFrame, vector_col, name=None, suffixes: list = ["_x", "_y", "_z"]
+):
+    """
+    Decompose a vector column in a DataFrame into separate columns for each component with custom suffixes.
+
+    Parameters:
+    - df (pl.DataFrame): The input DataFrame.
+    - vector_col (str): The name of the vector column to decompose.
+    - name (str, optional): Base name for the decomposed columns. If None, uses `vector_col` as the base name.
+    - suffixes (list, optional): A list of suffixes to use for the decomposed columns.
+      If None or not enough suffixes are provided, defaults to '_0', '_1', etc.
+
+    Returns:
+    - pl.DataFrame: A DataFrame with the original vector column decomposed into separate columns.
+    """
+
     if name is None:
         name = vector_col
 
-    return df.with_columns(
-        pl.col(vector_col).list.get(0).alias(f"{name}_x"),
-        pl.col(vector_col).list.get(1).alias(f"{name}_y"),
-        pl.col(vector_col).list.get(2).alias(f"{name}_z"),
-    )
+    # Determine the maximum length of vectors in the column to handle dynamic vector lengths
+    max_length = df.select(pl.col(vector_col).list.len()).max()[0, 0]
 
+    if suffixes is None or len(suffixes) < max_length:
+        if suffixes is None:
+            suffixes = []
+        # Extend or create the list of suffixes with default values
+        suffixes.extend([f"_{i}" for i in range(len(suffixes), max_length)])
+
+    # Create column expressions for each element in the vector
+    column_expressions = [
+        pl.col(vector_col).list.get(i).alias(name).name.suffix(suffixes[i])
+        for i in range(max_length)
+    ]
+
+    return df.with_columns(column_expressions)
