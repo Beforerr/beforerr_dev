@@ -1,27 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/01_basics.html</loc>
-    <lastmod>2024-06-01T07:03:25.339Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/10_polars.html</loc>
-    <lastmod>2024-06-01T07:03:26.279Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/03_matplotlib.html</loc>
-    <lastmod>2024-06-01T07:03:27.049Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/core.html</loc>
-    <lastmod>2024-06-01T07:03:25.286Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/11_projects.html</loc>
-    <lastmod>2024-06-01T07:03:25.636Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/02_r.html</loc>
-    <lastmod>2024-06-01T07:03:29.939Z</lastmod>
-  </url>
 </urlset>
