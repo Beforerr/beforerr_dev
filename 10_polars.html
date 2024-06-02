@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beforerr.py – beforerr</title>
+<title>Beforerr.py – Utils for Polars</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,6 +100,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -138,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">beforerr</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_polars.html">Utils for Polars</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -152,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">beforerr</span></a>
   </div>
 </li>
@@ -182,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_polars.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_polars.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Utils for Polars</span></a>
   </div>
 </li>
@@ -202,7 +205,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">Install</a></li>
+  <li><a href="#io" id="toc-io" class="nav-link active" data-scroll-target="#io">IO</a>
+  <ul>
+  <li><a href="#convert_to_pd_dataframe" id="toc-convert_to_pd_dataframe" class="nav-link" data-scroll-target="#convert_to_pd_dataframe">convert_to_pd_dataframe</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul>
+  <li><a href="#sort" id="toc-sort" class="nav-link" data-scroll-target="#sort">sort</a></li>
+  <li><a href="#pl_norm" id="toc-pl_norm" class="nav-link" data-scroll-target="#pl_norm">pl_norm</a></li>
+  <li><a href="#decompose_vector" id="toc-decompose_vector" class="nav-link" data-scroll-target="#decompose_vector">decompose_vector</a></li>
+  </ul></li>
+  <li><a href="#fast-filter-for-a-list-of-predicates" id="toc-fast-filter-for-a-list-of-predicates" class="nav-link" data-scroll-target="#fast-filter-for-a-list-of-predicates">Fast filter for a list of predicates</a>
+  <ul>
+  <li><a href="#filter_df_by_ranges" id="toc-filter_df_by_ranges" class="nav-link" data-scroll-target="#filter_df_by_ranges">filter_df_by_ranges</a></li>
+  <li><a href="#filter_series_by_ranges_i" id="toc-filter_series_by_ranges_i" class="nav-link" data-scroll-target="#filter_series_by_ranges_i">filter_series_by_ranges_i</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Beforerr/beforerr_dev/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -211,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">beforerr</h1>
+<h1 class="title">Utils for Polars</h1>
 </div>
 
 
@@ -229,12 +246,192 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<p>Python utils for different packages. Mainly developed by <code>nbdev</code>.</p>
-<section id="install" class="level2">
-<h2 class="anchored" data-anchor-id="install">Install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install beforerr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="io" class="level2">
+<h2 class="anchored" data-anchor-id="io">IO</h2>
+<hr>
+<section id="convert_to_pd_dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="convert_to_pd_dataframe">convert_to_pd_dataframe</h3>
+<blockquote class="blockquote">
+<pre><code> convert_to_pd_dataframe
+                          (df:polars.dataframe.frame.DataFrame|polars.lazy
+                          frame.frame.LazyFrame)</code></pre>
+</blockquote>
+<p><em>Convert a Polars DataFrame or LazyFrame into a pandas-like DataFrame.</em></p>
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 38%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>df</td>
+<td>polars.dataframe.frame.DataFrame | polars.lazyframe.frame.LazyFrame</td>
+<td>original DataFrame or LazyFrame</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<hr>
+<section id="sort" class="level3">
+<h3 class="anchored" data-anchor-id="sort">sort</h3>
+<blockquote class="blockquote">
+<pre><code> sort (df:polars.dataframe.frame.DataFrame, col='time')</code></pre>
+</blockquote>
+<hr>
+</section>
+<section id="pl_norm" class="level3">
+<h3 class="anchored" data-anchor-id="pl_norm">pl_norm</h3>
+<blockquote class="blockquote">
+<pre><code> pl_norm (columns, *more_columns)</code></pre>
+</blockquote>
+<p>*Computes the square root of the sum of squares for the given columns.</p>
+<p>Args: *columns (str): Names of the columns.</p>
+<p>Returns: pl.Expr: Expression representing the square root of the sum of squares.*</p>
+<hr>
+</section>
+<section id="decompose_vector" class="level3">
+<h3 class="anchored" data-anchor-id="decompose_vector">decompose_vector</h3>
+<blockquote class="blockquote">
+<pre><code> decompose_vector (df:polars.dataframe.frame.DataFrame, vector_col,
+                   name=None, suffixes:list=['_x', '_y', '_z'])</code></pre>
+</blockquote>
+<p>*Decompose a vector column in a DataFrame into separate columns for each component with custom suffixes.</p>
+<p>Parameters: - df (pl.DataFrame): The input DataFrame. - vector_col (str): The name of the vector column to decompose. - name (str, optional): Base name for the decomposed columns. If None, uses <code>vector_col</code> as the base name. - suffixes (list, optional): A list of suffixes to use for the decomposed columns. If None or not enough suffixes are provided, defaults to ’_0’, ’_1’, etc.</p>
+<p>Returns: - pl.DataFrame: A DataFrame with the original vector column decomposed into separate columns.*</p>
+</section>
+</section>
+<section id="fast-filter-for-a-list-of-predicates" class="level2">
+<h2 class="anchored" data-anchor-id="fast-filter-for-a-list-of-predicates">Fast filter for a list of predicates</h2>
+<p><a href="https://stackoverflow.com/questions/74993391/use-a-list-of-filters-within-polars">Use a list of filters within polars - Stack Overflow</a></p>
+<hr>
+<section id="filter_df_by_ranges" class="level3">
+<h3 class="anchored" data-anchor-id="filter_df_by_ranges">filter_df_by_ranges</h3>
+<blockquote class="blockquote">
+<pre><code> filter_df_by_ranges (data:polars.dataframe.frame.DataFrame, starts:list,
+                      stops:list, col='time')</code></pre>
+</blockquote>
+<p><em>Filter a DataFrame from ranges</em></p>
+<hr>
+</section>
+<section id="filter_series_by_ranges_i" class="level3">
+<h3 class="anchored" data-anchor-id="filter_series_by_ranges_i">filter_series_by_ranges_i</h3>
+<blockquote class="blockquote">
+<pre><code> filter_series_by_ranges_i (data:polars.series.series.Series, starts:list,
+                            stops:list)</code></pre>
+</blockquote>
+<div id="cell-11" class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sample_data():</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pl.DataFrame({</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"time"</span>: np.arange(<span class="dv">10</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_filter_df_by_intervals(sample_data):</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    filtered_data <span class="op">=</span> filter_df_by_ranges(sample_data, [<span class="dv">1</span>, <span class="dv">5</span>], [<span class="dv">3</span>, <span class="dv">7</span>])</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(filtered_data) <span class="op">==</span> <span class="dv">6</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> filtered_data[<span class="st">"time"</span>].<span class="bu">min</span>() <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> filtered_data[<span class="st">"time"</span>].<span class="bu">max</span>() <span class="op">==</span> <span class="dv">7</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_filter_df_by_intervals_no_match(sample_data):</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    filtered_data <span class="op">=</span> filter_df_by_ranges(sample_data, [<span class="dv">100</span>, <span class="dv">200</span>], [<span class="dv">300</span>, <span class="dv">400</span>])</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(filtered_data) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_filter_df_by_intervals_edge_case(sample_data):</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    filtered_data <span class="op">=</span> filter_df_by_ranges(sample_data, [<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(filtered_data) <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>_sample_data <span class="op">=</span> sample_data()</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>test_filter_df_by_intervals(_sample_data)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>test_filter_df_by_intervals_no_match(_sample_data)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>test_filter_df_by_intervals_edge_case(_sample_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000000</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pl.DataFrame({</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"time"</span>: np.arange(n),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>starts <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">200</span>, <span class="dv">100</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>stops <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">100</span>, n<span class="op">-</span><span class="dv">100</span>, <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CPU times: user 38.1 ms, sys: 8.89 ms, total: 47 ms
+Wall time: 45.6 ms</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<div>
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (999_801, 1)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+<tr class="odd">
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+</tr>
+<tr class="even">
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>999796</td>
+</tr>
+<tr class="even">
+<td>999797</td>
+</tr>
+<tr class="odd">
+<td>999798</td>
+</tr>
+<tr class="even">
+<td>999799</td>
+</tr>
+<tr class="odd">
+<td>999800</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
