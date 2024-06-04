@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "Personal Python utility library"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
-dependencies = ["pipe", "loguru"]
+dependencies = ["pipe", "loguru", "rich"]
 readme = "README.md"
 
 [build-system]
@@ -30,6 +30,7 @@ platforms = ["osx-arm64"]
 beforerr = { path = ".", editable = true }
 nbdev = "*"
 setuptools = "*"
+intake = "*"
 rpy2 = "*"
 rpy2-arrow = "*"
 
