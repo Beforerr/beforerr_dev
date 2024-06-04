@@ -4,18 +4,20 @@
 __all__ = ['load', 'save', 'action']
 
 # %% ../../nbs/03_io.ipynb 1
-from intake.readers.datatypes import recommend, JSONFile
+from intake.readers.datatypes import recommend, JSONFile, PickleFile
 import importlib
 from functools import partial
+from pydantic import validate_call
+from pathlib import Path
 
 # %% ../../nbs/03_io.ipynb 2
-maps = {JSONFile: ["beforerr.io.json"],}
+maps = {JSONFile: ["beforerr.io.json"], PickleFile: ["beforerr.io.pickle"]}
 
 def checkpath(file):
     # Placeholder implementation, replace with actual path checking logic
     pass
 
-def query_datatype(file):
+def query_datatype(file: str):
     """query the datatype of a file
 
     See also `os.path.splitext(file)` to get the file extension
@@ -24,7 +26,8 @@ def query_datatype(file):
     if JSONFile in datatypes:
         return JSONFile
     else:
-        return datatypes
+        # return datatypes
+        return PickleFile
 
 def applicable_func(datatype, func="load"):
     libraries = maps[datatype]
@@ -33,9 +36,10 @@ def applicable_func(datatype, func="load"):
     return getattr(mod, func)
 
 # %% ../../nbs/03_io.ipynb 3
-def action(func, file, *args, **kwargs):
+@validate_call
+def action(func, file: Path, *args, **kwargs):
     checkpath(file)
-    dp = query_datatype(file)
+    dp = query_datatype(file.as_posix())
     return applicable_func(dp, func)(file, *args, **kwargs)
 
 load = partial(action, "load")

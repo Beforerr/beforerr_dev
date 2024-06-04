@@ -4,7 +4,14 @@ website:
       - index.ipynb
       - 00_core.ipynb
       - 01_basics.ipynb
-      - 02_r.ipynb
-      - 03_matplotlib.ipynb
+      - 02_projects.ipynb
+      - 03_io.ipynb
       - 10_polars.ipynb
-      - 11_projects.ipynb
+      - 11_matplotlib.ipynb
+      - 12_r.ipynb
+      - nbdev.yml
+      - sidebar.yml
+      - styles.css
+      - section: test
+        contents:
+          - test/test.json
