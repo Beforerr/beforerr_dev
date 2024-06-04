@@ -1,0 +1,152 @@
+[
+  {
+    "objectID": "01_basics.html",
+    "href": "01_basics.html",
+    "title": "Basic functionality",
+    "section": "",
+    "text": "pmap\n\n pmap (func, *args, **kwargs)\n\nmap with partial",
+    "crumbs": [
+      "Basic functionality"
+    ]
+  },
+  {
+    "objectID": "11_matplotlib.html",
+    "href": "11_matplotlib.html",
+    "title": "Utils for Matplotlib",
+    "section": "",
+    "text": "unify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\nstring values denote sizes relative to the default font size",
+    "crumbs": [
+      "Utils for Matplotlib"
+    ]
+  },
+  {
+    "objectID": "02_projects.html",
+    "href": "02_projects.html",
+    "title": "Scientific project utils",
+    "section": "",
+    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#inspirations",
+    "href": "02_projects.html#inspirations",
+    "title": "Scientific project utils",
+    "section": "",
+    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#naming-tools",
+    "href": "02_projects.html#naming-tools",
+    "title": "Scientific project utils",
+    "section": "Naming Tools",
+    "text": "Naming Tools\n\n\nsavename\n\n savename (c:Dict, prefix:str='', suffix:str='',\n           allowedtypes:Tuple=(&lt;class 'int'&gt;, &lt;class 'float'&gt;, &lt;class\n           'str'&gt;, &lt;class 'bool'&gt;), accesses:List[str]=[],\n           ignores:List[str]=[], digits:int=None, connector:str='_',\n           equals:str='=', expand:List[str]=[], sigdigits:int=3,\n           val2string:Callable=None, sort:bool=True)\n\nCreate a shorthand name based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\nDict\n\nThe input dictionary containing the parameters.\n\n\nprefix\nstr\n\nThe prefix to start the name with.\n\n\nsuffix\nstr\n\nThe suffix to end the name with.\n\n\nallowedtypes\nTuple\n(&lt;class ‘int’&gt;, &lt;class ‘float’&gt;, &lt;class ‘str’&gt;, &lt;class ‘bool’&gt;)\nOnly values of these types are included. (default: (int, float, str, bool))\n\n\naccesses\nList\n[]\nSpecific keys to include in the name.\n\n\nignores\nList\n[]\nSpecific keys to ignore.\n\n\ndigits\nint\nNone\nNumber of decimal digits for rounding floats.\n\n\nconnector\nstr\n_\nString used to connect key-value pairs.\n\n\nequals\nstr\n=\nConnector between key and value.\n\n\nexpand\nList\n[]\nKeys that will be expanded to their nested savename.\n\n\nsigdigits\nint\n3\nNumber of significant digits for rounding floats.\n\n\nval2string\nCallable\nNone\nFunction to convert values to strings.\n\n\nsort\nbool\nTrue\nWhether to sort the keys alphabetically.\n\n\nReturns\nstr\n\nThe generated shorthand name.\n\n\n\n\n# Examples\nd = {\"a\": 0.153456453, \"b\": 5, \"mode\": \"double\"}\ntest_eq(savename(d), \"a=0.153_b=5_mode=double\")\ntest_eq(savename(d, digits=4), \"a=0.1535_b=5_mode=double\")\ntest_eq(savename(d, prefix=\"n\"), \"n_a=0.153_b=5_mode=double\")\ntest_eq(savename(d, suffix=\"n\"), \"a=0.153_b=5_mode=double.n\")\ntest_eq(\n    savename(d, prefix=\"n\", suffix=\"n\", connector=\"-\"), \"n-a=0.153-b=5-mode=double.n\"\n)\ntest_eq(savename(d, allowedtypes=(str,)), \"mode=double\")\ntest_eq(savename(d, connector=\" | \", equals=\" = \"), \"a = 0.153 | b = 5 | mode = double\")\n\nrick = {\"never\": \"gonna\", \"give\": \"you\", \"up\": \"!\"}\ntest_eq(savename(rick), \"give=you_never=gonna_up=!\")\ntest_eq(savename(rick, ignores=[\"up\"]), \"give=you_never=gonna\")\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[6], line 3\n      1 # Examples\n      2 d = {\"a\": 0.153456453, \"b\": 5, \"mode\": \"double\"}\n----&gt; 3 test_eq(savename(d), \"a=0.153_b=5_mode=double\")\n      4 test_eq(savename(d, digits=4), \"a=0.1535_b=5_mode=double\")\n      5 test_eq(savename(d, prefix=\"n\"), \"n_a=0.153_b=5_mode=double\")\n\nCell In[5], line 95, in savename(c, prefix, suffix, allowedtypes, accesses, ignores, digits, connector, equals, expand, sigdigits, val2string, sort)\n     93     entry = f\"{label}{equals}({sname})\"\n     94 else:\n---&gt; 95     entry = f\"{label}{equals}{val2string(val)}\"\n     96 if not first:\n     97     s += connector\n\nCell In[5], line 63, in savename.&lt;locals&gt;.&lt;lambda&gt;(val)\n     57     warnings.warn(\n     58         \"Path separators in `savename` prefixes may break reproducibility on other OS. \"\n     59         \"The recommended way is using `os.path.join` with `savename` (e.g. `os.path.join(datadir, savename(prefix, data))`).\"\n     60     )\n     62 sigdigits = None if digits is not None else sigdigits\n---&gt; 63 val2string = val2string or (lambda val: valtostring(val, digits, sigdigits))\n     65 labels = accesses or list(c.keys())\n     66 p = (\n     67     sorted(range(len(labels)), key=lambda k: labels[k])\n     68     if sort\n     69     else range(len(labels))\n     70 )\n\nNameError: name 'valtostring' is not defined\n\n\n\n\n\n\nappend_prefix_suffix\n\n append_prefix_suffix (name:str, prefix:str, suffix:str)",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#directory-tools",
+    "href": "02_projects.html#directory-tools",
+    "title": "Scientific project utils",
+    "section": "Directory tools",
+    "text": "Directory tools\n\n\ndatadir\n\n datadir ()\n\n\n\n\nprojectdir\n\n projectdir ()\n\n\n\n\nsetup_run_dir\n\n setup_run_dir (c:Dict, base_dir:Callable=&lt;function datadir&gt;,\n                change_dir:bool=True, **kwargs)\n\nCreate a run directory based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\nDict\n\nThe dictionary containing the parameters.\n\n\nbase_dir\nCallable\ndatadir\nThe base directory to create the run directory in.\n\n\nchange_dir\nbool\nTrue\n\n\n\nkwargs\n\n\n\n\n\nReturns\nPath\n\nThe run directory.",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#saving-tools",
+    "href": "02_projects.html#saving-tools",
+    "title": "Scientific project utils",
+    "section": "Saving Tools",
+    "text": "Saving Tools\n\n\nsafesave\n\n safesave (filepath:pathlib.Path, data, save_func:Callable)\n\n\n# Example usage\ndata = \"Some data to be savedsss\"\nsafesave(\"test.txt\", data)\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:Any,\n                  path:pathlib.Path=Path('/Users/zijin/projects/beforerr_d\n                  ev'), suffix:str='pickle', prefix:str=None,\n                  force:bool=False, verbose:bool=True,\n                  action_kwargs:dict={},\n                  filename:Union[Callable,str]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:Any, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True, **kwargs)",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "ifnone\n\n ifnone (a, b)\n\nb if a is None else a",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "03_io.html",
+    "href": "03_io.html",
+    "title": "IO utils",
+    "section": "",
+    "text": "FileIO.jl\n\nFileIO.jl/src/loadsave.jl at master · JuliaIO/FileIO.jl\n\nIntake\n\nintake/intake/readers/datatypes.py at master · intake/intake\nEasy loading and saving · Issue #819 · intake/intake\n\n\nReference:\n\n7. Input and Output — Python documentation\n\n\n\n\n\n\n action (func, file, *args, **kwargs)\n\n\nfp = 'test/test.json'\ndata = load(fp)\nsave('test/test2.json', data)",
+    "crumbs": [
+      "IO utils"
+    ]
+  },
+  {
+    "objectID": "03_io.html#inspirations",
+    "href": "03_io.html#inspirations",
+    "title": "IO utils",
+    "section": "",
+    "text": "FileIO.jl\n\nFileIO.jl/src/loadsave.jl at master · JuliaIO/FileIO.jl\n\nIntake\n\nintake/intake/readers/datatypes.py at master · intake/intake\nEasy loading and saving · Issue #819 · intake/intake\n\n\nReference:\n\n7. Input and Output — Python documentation\n\n\n\n\n\n\n action (func, file, *args, **kwargs)\n\n\nfp = 'test/test.json'\ndata = load(fp)\nsave('test/test2.json', data)",
+    "crumbs": [
+      "IO utils"
+    ]
+  },
+  {
+    "objectID": "10_polars.html",
+    "href": "10_polars.html",
+    "title": "Utils for Polars",
+    "section": "",
+    "text": "convert_to_pd_dataframe\n                          (df:polars.dataframe.frame.DataFrame|polars.lazy\n                          frame.frame.LazyFrame)\n\nConvert a Polars DataFrame or LazyFrame into a pandas-like DataFrame.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\ndf\npolars.dataframe.frame.DataFrame | polars.lazyframe.frame.LazyFrame\noriginal DataFrame or LazyFrame",
+    "crumbs": [
+      "Utils for Polars"
+    ]
+  },
+  {
+    "objectID": "10_polars.html#io",
+    "href": "10_polars.html#io",
+    "title": "Utils for Polars",
+    "section": "",
+    "text": "convert_to_pd_dataframe\n                          (df:polars.dataframe.frame.DataFrame|polars.lazy\n                          frame.frame.LazyFrame)\n\nConvert a Polars DataFrame or LazyFrame into a pandas-like DataFrame.\n\n\n\n\n\n\n\n\n\nType\nDetails\n\n\n\n\ndf\npolars.dataframe.frame.DataFrame | polars.lazyframe.frame.LazyFrame\noriginal DataFrame or LazyFrame",
+    "crumbs": [
+      "Utils for Polars"
+    ]
+  },
+  {
+    "objectID": "10_polars.html#functions",
+    "href": "10_polars.html#functions",
+    "title": "Utils for Polars",
+    "section": "Functions",
+    "text": "Functions\n\n\nsort\n\n sort (df:polars.dataframe.frame.DataFrame, col='time')\n\n\n\n\npl_norm\n\n pl_norm (columns, *more_columns)\n\n*Computes the square root of the sum of squares for the given columns.\nArgs: *columns (str): Names of the columns.\nReturns: pl.Expr: Expression representing the square root of the sum of squares.*\n\n\n\ndecompose_vector\n\n decompose_vector (df:polars.dataframe.frame.DataFrame, vector_col,\n                   name=None, suffixes:list=['_x', '_y', '_z'])\n\n*Decompose a vector column in a DataFrame into separate columns for each component with custom suffixes.\nParameters: - df (pl.DataFrame): The input DataFrame. - vector_col (str): The name of the vector column to decompose. - name (str, optional): Base name for the decomposed columns. If None, uses vector_col as the base name. - suffixes (list, optional): A list of suffixes to use for the decomposed columns. If None or not enough suffixes are provided, defaults to ’_0’, ’_1’, etc.\nReturns: - pl.DataFrame: A DataFrame with the original vector column decomposed into separate columns.*",
+    "crumbs": [
+      "Utils for Polars"
+    ]
+  },
+  {
+    "objectID": "10_polars.html#fast-filter-for-a-list-of-predicates",
+    "href": "10_polars.html#fast-filter-for-a-list-of-predicates",
+    "title": "Utils for Polars",
+    "section": "Fast filter for a list of predicates",
+    "text": "Fast filter for a list of predicates\nUse a list of filters within polars - Stack Overflow\n\n\nfilter_df_by_ranges\n\n filter_df_by_ranges (data:polars.dataframe.frame.DataFrame, starts:list,\n                      stops:list, col='time')\n\nFilter a DataFrame from ranges\n\n\n\nfilter_series_by_ranges_i\n\n filter_series_by_ranges_i (data:polars.series.series.Series, starts:list,\n                            stops:list)\n\n\nimport polars as pl\nimport numpy as np\n\ndef sample_data():\n    return pl.DataFrame({\n        \"time\": np.arange(10),\n    })\n\ndef test_filter_df_by_intervals(sample_data):\n    filtered_data = filter_df_by_ranges(sample_data, [1, 5], [3, 7])\n    assert len(filtered_data) == 6\n    assert filtered_data[\"time\"].min() == 1\n    assert filtered_data[\"time\"].max() == 7\n\ndef test_filter_df_by_intervals_no_match(sample_data):\n    filtered_data = filter_df_by_ranges(sample_data, [100, 200], [300, 400])\n    assert len(filtered_data) == 0\n\ndef test_filter_df_by_intervals_edge_case(sample_data):\n    filtered_data = filter_df_by_ranges(sample_data, [1, 1], [1, 1])\n    assert len(filtered_data) == 1\n\n_sample_data = sample_data()\ntest_filter_df_by_intervals(_sample_data)\ntest_filter_df_by_intervals_no_match(_sample_data)\ntest_filter_df_by_intervals_edge_case(_sample_data)\n\n\nn = 1000000\ndata = pl.DataFrame({\n    \"time\": np.arange(n),\n})\n\nstarts = list(range(0, n-200, 100))\nstops = list(range(100, n-100, 100))\n\nCPU times: user 38.1 ms, sys: 8.89 ms, total: 47 ms\nWall time: 45.6 ms\n\n\n\nshape: (999_801, 1)\n\n\n\ntime\n\n\ni64\n\n\n\n\n0\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n…\n\n\n999796\n\n\n999797\n\n\n999798\n\n\n999799\n\n\n999800",
+    "crumbs": [
+      "Utils for Polars"
+    ]
+  },
+  {
+    "objectID": "12_r.html",
+    "href": "12_r.html",
+    "title": "R utils",
+    "section": "",
+    "text": "Utils for using R with python in Jupyter\nYou need to install depending package with pip install rpy2 rpy2-arrow\nSee rpy2 for more details and rp2-arrow for arrow support.\nTODO: support polars LazyFrame.\n\n\npy2rpy_polars\n\n py2rpy_polars ()\n\nHelper functions to convert between polars and R dataframes\nHere is how you can use it, remember to load the extension first:\n%load_ext rpy2.ipython\nfrom ids_finder.utils.r import py2rpy_polars\nconv_pl = py2rpy_polars()\nThen you can use it like this to export a dataframe df to R:\n%R -i df -c conv_pl",
+    "crumbs": [
+      "`R` utils"
+    ]
+  }
+]
