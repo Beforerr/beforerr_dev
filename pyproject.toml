@@ -4,7 +4,7 @@ dynamic = ["version"]
 description = "Personal Python utility library"
 authors = [{ name = "Beforerr", email = "zzj956959688@gmail.com" }]
 requires-python = ">= 3.10"
-dependencies = ["pydantic", "pipe", "loguru", "rich"]
+dependencies = ["pydantic", "intake", "pipe", "loguru", "rich"]
 readme = "README.md"
 
 [build-system]
@@ -41,5 +41,3 @@ matplotlib = "*"
 ipykernel = "*"
 polars = "*"
 universal_pathlib = ">=0.2.2"
-# rpy2 = "*"
-# r-arrow = "*"
