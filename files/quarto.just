@@ -15,7 +15,7 @@ quarto-publish:
     nbdev_prepare
     nbdev_proc_nbs && cd _proc
   fi
-  if ! quarto publish gh-pages --no-render --no-prompt; then
+  if ! quarto publish gh-pages --no-prompt; then
     echo "quarto publish gh-pages failed"
     quarto publish gh-pages
   fi
