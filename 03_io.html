@@ -198,6 +198,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><code>R</code> utils</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">test</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -212,6 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#action" id="toc-action" class="nav-link" data-scroll-target="#action">action</a></li>
   </ul></li>
+  <li><a href="#test" id="toc-test" class="nav-link" data-scroll-target="#test">Test</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Beforerr/beforerr_dev/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -259,16 +271,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="action" class="level3">
 <h3 class="anchored" data-anchor-id="action">action</h3>
 <blockquote class="blockquote">
-<pre><code> action (func, file, *args, **kwargs)</code></pre>
+<pre><code> action (func, file:pathlib.Path, *args, **kwargs)</code></pre>
 </blockquote>
-<div id="cell-3" class="cell" data-execution_count="22">
+</section>
+</section>
+<section id="test" class="level2">
+<h2 class="anchored" data-anchor-id="test">Test</h2>
+<div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> <span class="st">'test/test.json'</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> load(fp)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>save(<span class="st">'test/test2.json'</span>, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> load(fp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
