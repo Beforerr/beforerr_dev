@@ -497,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="safesave">safesave</h3>
 <blockquote class="blockquote">
 <pre><code> safesave (file:str, data, save_func:Callable=functools.partial(&lt;function
-           action at 0x10650f9c0&gt;, 'save'))</code></pre>
+           action at 0x108a6bce0&gt;, 'save'))</code></pre>
 </blockquote>
 </section>
 <section id="produce-or-load" class="level3">
@@ -508,9 +508,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="produce_or_load" class="level3">
 <h3 class="anchored" data-anchor-id="produce_or_load">produce_or_load</h3>
 <blockquote class="blockquote">
-<pre><code> produce_or_load (f:Callable, config,
+<pre><code> produce_or_load (f:Callable, config:dict={},
                   path:pathlib.Path=Path('/Users/zijin/projects/beforerr_d
-                  ev'), suffix:str='pickle', prefix:str=None,
+                  ev/data'), suffix:str='pickle', prefix:str=None,
                   force:bool=False, verbose:bool=True,
                   action_kwargs:dict={},
                   filename:Union[Callable,str]=None, **kwargs)</code></pre>
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="produce_or_load_file" class="level3">
 <h3 class="anchored" data-anchor-id="produce_or_load_file">produce_or_load_file</h3>
 <blockquote class="blockquote">
-<pre><code> produce_or_load_file (f:Callable, config, file:pathlib.Path,
+<pre><code> produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,
                        force:bool=False, verbose:bool=True, **kwargs)</code></pre>
 </blockquote>
 
