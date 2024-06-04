@@ -203,7 +203,7 @@ def safesave(file: str, data, save_func: Callable = save):
 # %% ../nbs/02_projects.ipynb 15
 def produce_or_load_file(
     f: Callable,
-    config,
+    config: dict,
     file: Path,
     force: bool = False,
     verbose: bool = True,
@@ -219,7 +219,7 @@ def produce_or_load_file(
             force and print(f"Producing file {file} now...")
             not exist and print(f"File {file} does not exist. Producing it now...")
 
-        data = f(config)
+        data = f(**config)
 
         try:
             save(file, data, **kwargs)
@@ -232,8 +232,8 @@ def produce_or_load_file(
 
 def produce_or_load(
     f: Callable,
-    config,
-    path: Path = Path.cwd(),
+    config: dict = dict(),
+    path: Path = datadir(),
     suffix: str = "pickle",
     prefix: str = None,
     force: bool = False,
