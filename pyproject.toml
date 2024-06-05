@@ -38,8 +38,6 @@ beforerr = { path = ".", editable = true }
 nbdev = "*"
 setuptools = "*"
 intake = "*"
-rpy2 = "*"
-rpy2-arrow = "*"
 
 [tool.pixi.tasks]
 
