@@ -44,7 +44,7 @@
     "href": "02_projects.html#saving-tools",
     "title": "Scientific project utils",
     "section": "Saving Tools",
-    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7fa769a3b920&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True, **kwargs)",
+    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7fe924ae7880&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True, **kwargs)",
     "crumbs": [
       "Scientific project utils"
     ]
