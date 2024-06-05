@@ -1,7 +1,7 @@
 import 'files/quarto.just'
 
 default:
-   just --list
+  just --list
 
 ensure_env:
   pre-commit install
