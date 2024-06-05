@@ -31,7 +31,7 @@ path = "beforerr/__init__.py"
 
 [tool.pixi.project]
 channels = ["conda-forge"]
-platforms = ["osx-arm64"]
+platforms = ["osx-arm64", "linux-64"]
 
 [tool.pixi.pypi-dependencies]
 beforerr = { path = ".", editable = true }
