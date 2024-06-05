@@ -34,7 +34,7 @@ channels = ["conda-forge"]
 platforms = ["osx-arm64", "linux-64"]
 
 [tool.pixi.pypi-dependencies]
-beforerr = { path = ".", editable = true }
+beforerr = { path = ".", editable = true, extras = ["r"] }
 nbdev = "*"
 setuptools = "*"
 intake = "*"
@@ -45,3 +45,4 @@ intake = "*"
 matplotlib = "*"
 ipykernel = "*"
 polars = "*"
+r-base = "*"

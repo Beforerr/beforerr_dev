@@ -9,9 +9,3 @@ website:
       - 10_polars.ipynb
       - 11_matplotlib.ipynb
       - 12_r.ipynb
-      - nbdev.yml
-      - sidebar.yml
-      - styles.css
-      - section: test
-        contents:
-          - test/test.json
