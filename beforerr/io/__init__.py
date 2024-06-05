@@ -13,9 +13,11 @@ from pathlib import Path
 # %% ../../nbs/03_io.ipynb 2
 maps = {JSONFile: ["beforerr.io.json"], PickleFile: ["beforerr.io.pickle"]}
 
+
 def checkpath(file):
     # Placeholder implementation, replace with actual path checking logic
     pass
+
 
 def query_datatype(file: str):
     """query the datatype of a file
@@ -29,6 +31,7 @@ def query_datatype(file: str):
         # return datatypes
         return PickleFile
 
+
 def applicable_func(datatype, func="load"):
     libraries = maps[datatype]
     lib = libraries[0]
@@ -41,6 +44,7 @@ def action(func, file: Path, *args, **kwargs):
     checkpath(file)
     dp = query_datatype(file.as_posix())
     return applicable_func(dp, func)(file, *args, **kwargs)
+
 
 load = partial(action, "load")
 save = partial(action, "save")

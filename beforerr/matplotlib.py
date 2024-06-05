@@ -16,8 +16,9 @@ def unify_axis_fontsize(ax: Axes, fontsize: str | float):
 
 # %% ../nbs/11_matplotlib.ipynb 3
 def unify_axes_fontsize(
-    axes: Axes, # a single axis or a list of axes
-    fontsize: str | float = "medium" # string values denote sizes relative to the default font size
+    axes: Axes,  # a single axis or a list of axes
+    fontsize: str
+    | float = "medium",  # string values denote sizes relative to the default font size
 ):
     """
     Set the fontsize of all text elements in a matplotlib axis to the same value.

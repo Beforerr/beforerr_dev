@@ -6,7 +6,7 @@ repos:
       types_or: [ python, pyi, jupyter ]
       args: [ --fix ]
     - id: ruff-format
-      types_or: [ python, pyi, jupyter ]
+      types_or: [ jupyter ]
 - repo: https://github.com/fastai/nbdev
   rev: 2.2.10
   hooks:

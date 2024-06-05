@@ -12,11 +12,11 @@ import polars as pl
 # %% ../nbs/12_r.ipynb 4
 def py2rpy_polars():
     "Helper functions to convert between `polars` and `R` dataframes"
-    base = importr('base')
+    base = importr("base")
 
     conv_pl = rpy2.robjects.conversion.Converter(
-        'Polars to pyarrow',
-        template=pyra.converter)
+        "Polars to pyarrow", template=pyra.converter
+    )
 
     @conv_pl.py2rpy.register(pl.DataFrame)
     def py2rpy_pandas(dataf: pl.DataFrame):

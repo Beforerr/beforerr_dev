@@ -9,7 +9,7 @@ from typing import Any, Collection
 
 # %% ../nbs/10_polars.ipynb 4
 def convert_to_pd_dataframe(
-    df: pl.DataFrame | pl.LazyFrame, # original DataFrame or LazyFrame
+    df: pl.DataFrame | pl.LazyFrame,  # original DataFrame or LazyFrame
 ):
     """
     Convert a Polars DataFrame or LazyFrame into a pandas-like DataFrame.
@@ -23,14 +23,12 @@ def convert_to_pd_dataframe(
 
     return data
 
-
 # %% ../nbs/10_polars.ipynb 6
 def sort(df: pl.DataFrame, col="time"):
     if df.get_column(col).is_sorted():
         return df.set_sorted(col)
     else:
         return df.sort(col)
-
 
 # %% ../nbs/10_polars.ipynb 7
 def _expand_selectors(items: Any, *more_items: Any) -> list[Any]:
