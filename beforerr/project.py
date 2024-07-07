@@ -5,15 +5,15 @@ __all__ = ['savename', 'append_prefix_suffix', 'projectdir', 'datadir', 'setup_r
            'produce_or_load']
 
 # %% ../nbs/02_projects.ipynb 1
-from pydantic import validate_call
 import os
-from upath import UPath
+from .io import load, save
+from datetime import timedelta
 from pathlib import Path
+from pydantic import validate_call
+
 import warnings
 from typing import Callable, Tuple, Union
 from loguru import logger
-
-from .io import load, save
 
 # %% ../nbs/02_projects.ipynb 4
 def valtostring(val, digits: Union[int, None], sigdigits: int) -> str:
@@ -29,7 +29,7 @@ def savename(
     c: dict,
     prefix: str = "",
     suffix: str = "",
-    allowedtypes: Tuple = (int, float, str, bool),
+    allowedtypes: Tuple = (int, float, str, bool, timedelta),
     accesses: list[str] = [],
     ignores: list[str] = [],
     digits: int = None,
@@ -189,7 +189,7 @@ def increment_backup_num(filepath: Path):
 
 # %% ../nbs/02_projects.ipynb 13
 def safesave(file: str, data, save_func: Callable = save):
-    path = UPath(file)
+    path = Path(file)
 
     if path.exists():
         backup_path = increment_backup_num(path)
