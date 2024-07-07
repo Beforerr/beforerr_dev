@@ -205,11 +205,13 @@ def produce_or_load_file(
     file: Path,
     force: bool = False,
     verbose: bool = True,
+    load_func: Callable = load,
+    save_func: Callable = save,
     **kwargs,
 ):
     exist = file.is_file()
     if not force and exist:
-        data = load(file, **kwargs)
+        data = load_func(file, **kwargs)
         return data, file
     else:
         if verbose:
@@ -219,7 +221,7 @@ def produce_or_load_file(
         data = f(**config)
 
         try:
-            save(file, data, **kwargs)
+            save_func(file, data, **kwargs)
             verbose and print(f"File {file} saved.")
         except Exception as e:
             print(f"Could not save file. Error: {e}")
