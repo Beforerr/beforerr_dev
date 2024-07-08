@@ -4,14 +4,18 @@
 __all__ = ['load', 'save', 'action']
 
 # %% ../../nbs/03_io.ipynb 1
-from intake.readers.datatypes import recommend, JSONFile, PickleFile
+from intake.readers.datatypes import recommend, JSONFile, PickleFile, Feather2
 import importlib
 from functools import partial
 from pydantic import validate_call
 from pathlib import Path
 
 # %% ../../nbs/03_io.ipynb 2
-maps = {JSONFile: ["beforerr.io.json"], PickleFile: ["beforerr.io.pickle"]}
+maps = {
+    JSONFile: ["beforerr.io.json"],
+    PickleFile: ["beforerr.io.pickle"],
+    Feather2: ["beforerr.io.arrow_ipc"],
+}
 
 
 def checkpath(file):
@@ -27,8 +31,9 @@ def query_datatype(file: str):
     datatypes = recommend(file)
     if JSONFile in datatypes:
         return JSONFile
+    if Feather2 in datatypes:
+        return Feather2
     else:
-        # return datatypes
         return PickleFile
 
 
