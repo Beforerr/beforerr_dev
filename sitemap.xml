@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/index.html</loc>
-    <lastmod>2024-07-07T14:44:58.018Z</lastmod>
+    <loc>https://Beforerr.github.io/beforerr_dev/core.html</loc>
+    <lastmod>2024-07-12T22:38:41.659Z</lastmod>
   </url>
   <url>
     <loc>https://Beforerr.github.io/beforerr_dev/01_basics.html</loc>
-    <lastmod>2024-07-07T14:44:57.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/core.html</loc>
-    <lastmod>2024-07-07T14:44:57.462Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/12_r.html</loc>
-    <lastmod>2024-07-07T14:44:59.626Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/12_tplot.html</loc>
-    <lastmod>2024-07-07T14:44:57.362Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/11_matplotlib.html</loc>
-    <lastmod>2024-07-07T14:44:59.130Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/10_polars.html</loc>
-    <lastmod>2024-07-07T14:44:57.574Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Beforerr.github.io/beforerr_dev/03_io.html</loc>
-    <lastmod>2024-07-07T14:44:57.994Z</lastmod>
+    <lastmod>2024-07-12T22:38:41.623Z</lastmod>
   </url>
   <url>
     <loc>https://Beforerr.github.io/beforerr_dev/02_projects.html</loc>
-    <lastmod>2024-07-07T14:44:58.162Z</lastmod>
+    <lastmod>2024-07-12T22:38:41.863Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Beforerr.github.io/beforerr_dev/index.html</loc>
+    <lastmod>2024-07-12T22:38:41.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Beforerr.github.io/beforerr_dev/11_matplotlib.html</loc>
+    <lastmod>2024-07-12T22:38:42.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Beforerr.github.io/beforerr_dev/03_io.html</loc>
+    <lastmod>2024-07-12T22:38:41.619Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Beforerr.github.io/beforerr_dev/12_tplot.html</loc>
+    <lastmod>2024-07-12T22:38:41.223Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Beforerr.github.io/beforerr_dev/10_polars.html</loc>
+    <lastmod>2024-07-12T22:38:41.591Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Beforerr.github.io/beforerr_dev/12_r.html</loc>
+    <lastmod>2024-07-12T22:38:43.575Z</lastmod>
   </url>
 </urlset>

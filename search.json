@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "ifnone\n\n ifnone (a, b)\n\nb if a is None else a",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "01_basics.html",
+    "href": "01_basics.html",
+    "title": "Basic functionality",
+    "section": "",
+    "text": "pmap\n\n pmap (func, *args, **kwargs)\n\nmap with partial",
+    "crumbs": [
+      "Basic functionality"
+    ]
+  },
+  {
+    "objectID": "02_projects.html",
+    "href": "02_projects.html",
+    "title": "Scientific project utils",
+    "section": "",
+    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#inspirations",
+    "href": "02_projects.html#inspirations",
+    "title": "Scientific project utils",
+    "section": "",
+    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#naming-tools",
+    "href": "02_projects.html#naming-tools",
+    "title": "Scientific project utils",
+    "section": "Naming Tools",
+    "text": "Naming Tools\n\n\nsavename\n\n savename (c:dict, prefix:str='', suffix:str='',\n           allowedtypes:Tuple=(&lt;class 'int'&gt;, &lt;class 'float'&gt;, &lt;class\n           'str'&gt;, &lt;class 'bool'&gt;, &lt;class 'datetime.timedelta'&gt;),\n           accesses:list[str]=[], ignores:list[str]=[], digits:int=None,\n           connector:str='_', equals:str='=', expand:list[str]=[],\n           sigdigits:int=3, val2string:Callable=None, sort:bool=True)\n\nCreate a shorthand name based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\ndict\n\nThe input dictionary containing the parameters.\n\n\nprefix\nstr\n\nThe prefix to start the name with.\n\n\nsuffix\nstr\n\nThe suffix to end the name with.\n\n\nallowedtypes\nTuple\n(&lt;class ‘int’&gt;, &lt;class ‘float’&gt;, &lt;class ‘str’&gt;, &lt;class ‘bool’&gt;, &lt;class ‘datetime.timedelta’&gt;)\nOnly values of these types are included. (default: (int, float, str, bool))\n\n\naccesses\nlist\n[]\nSpecific keys to include in the name.\n\n\nignores\nlist\n[]\nSpecific keys to ignore.\n\n\ndigits\nint\nNone\nNumber of decimal digits for rounding floats.\n\n\nconnector\nstr\n_\nString used to connect key-value pairs.\n\n\nequals\nstr\n=\nConnector between key and value.\n\n\nexpand\nlist\n[]\nKeys that will be expanded to their nested savename.\n\n\nsigdigits\nint\n3\nNumber of significant digits for rounding floats.\n\n\nval2string\nCallable\nNone\nFunction to convert values to strings.\n\n\nsort\nbool\nTrue\nWhether to sort the keys alphabetically.\n\n\nReturns\nstr\n\nThe generated shorthand name.\n\n\n\n\n# Examples\nd = {\"a\": 0.153456453, \"b\": 5, \"mode\": \"double\"}\ntest_eq(savename(d), \"a=0.153_b=5_mode=double\")\ntest_eq(savename(d, digits=4), \"a=0.1535_b=5_mode=double\")\ntest_eq(savename(d, prefix=\"n\"), \"n_a=0.153_b=5_mode=double\")\ntest_eq(savename(d, suffix=\"n\"), \"a=0.153_b=5_mode=double.n\")\ntest_eq(\n    savename(d, prefix=\"n\", suffix=\"n\", connector=\"-\"), \"n-a=0.153-b=5-mode=double.n\"\n)\ntest_eq(savename(d, allowedtypes=(str,)), \"mode=double\")\ntest_eq(savename(d, connector=\" | \", equals=\" = \"), \"a = 0.153 | b = 5 | mode = double\")\n\nrick = {\"never\": \"gonna\", \"give\": \"you\", \"up\": \"!\"}\ntest_eq(savename(rick), \"give=you_never=gonna_up=!\")\ntest_eq(savename(rick, ignores=[\"up\"]), \"give=you_never=gonna\")\n\n\n\n\nappend_prefix_suffix\n\n append_prefix_suffix (name:str, prefix:str, suffix:str)",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#directory-tools",
+    "href": "02_projects.html#directory-tools",
+    "title": "Scientific project utils",
+    "section": "Directory tools",
+    "text": "Directory tools\n\n\nplotsdir\n\n plotsdir (subdir='figures')\n\n\n\n\ndatadir\n\n datadir (subdir='data')\n\n\n\n\nprojectdir\n\n projectdir ()\n\n\n\n\nsetup_run_dir\n\n setup_run_dir (c:dict, base_dir:Callable=&lt;function datadir&gt;,\n                change_dir:bool=True, **kwargs)\n\nCreate a run directory based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\ndict\n\nThe dictionary containing the parameters.\n\n\nbase_dir\nCallable\ndatadir\nThe base directory to create the run directory in.\n\n\nchange_dir\nbool\nTrue\n\n\n\nkwargs\n\n\n\n\n\nReturns\nPath\n\nThe run directory.",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
+    "objectID": "02_projects.html#saving-tools",
+    "href": "02_projects.html#saving-tools",
+    "title": "Scientific project utils",
+    "section": "Saving Tools",
+    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7fd2711e27a0&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True,\n                       load_func:Callable=functools.partial(&lt;function\n                       action at 0x7fd2711e27a0&gt;, 'load'),\n                       save_func:Callable=functools.partial(&lt;function\n                       action at 0x7fd2711e27a0&gt;, 'save'), **kwargs)",
+    "crumbs": [
+      "Scientific project utils"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "beforerr",
@@ -20,43 +90,43 @@
     ]
   },
   {
-    "objectID": "01_basics.html",
-    "href": "01_basics.html",
-    "title": "Basic functionality",
-    "section": "",
-    "text": "pmap\n\n pmap (func, *args, **kwargs)\n\nmap with partial",
-    "crumbs": [
-      "Basic functionality"
-    ]
-  },
-  {
-    "objectID": "core.html",
-    "href": "core.html",
-    "title": "core",
-    "section": "",
-    "text": "ifnone\n\n ifnone (a, b)\n\nb if a is None else a",
-    "crumbs": [
-      "core"
-    ]
-  },
-  {
-    "objectID": "12_r.html",
-    "href": "12_r.html",
-    "title": "R utils",
-    "section": "",
-    "text": "Utils for using R with python in Jupyter\nYou need to install depending package with pip install rpy2 rpy2-arrow\nSee rpy2 for more details and rp2-arrow for arrow support.\nTODO: support polars LazyFrame.\n\n\npy2rpy_polars\n\n py2rpy_polars ()\n\nHelper functions to convert between polars and R dataframes\nHere is how you can use it, remember to load the extension first:\n%load_ext rpy2.ipython\nfrom ids_finder.utils.r import py2rpy_polars\nconv_pl = py2rpy_polars()\nThen you can use it like this to export a dataframe df to R:\n%R -i df -c conv_pl",
-    "crumbs": [
-      "`R` utils"
-    ]
-  },
-  {
     "objectID": "11_matplotlib.html",
     "href": "11_matplotlib.html",
     "title": "Utils for Matplotlib",
     "section": "",
-    "text": "unify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium",
+    "text": "func2axes\n\n func2axes\n            (axes:matplotlib.axes._axes.Axes|list[matplotlib.axes._axes.Ax\n            es], func, *args, **kwargs)\n\n\n\n\nunify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\n\n\n\n\n\n\n\nhide_fig_legend\n\n hide_fig_legend (fig:matplotlib.figure.Figure)\n\n\n\n\nhide_axes_legend\n\n hide_axes_legend\n                   (axes:matplotlib.axes._axes.Axes|list[matplotlib.axes._\n                   axes.Axes])\n\n\n\n\nhide_axis_legend\n\n hide_axis_legend (ax:matplotlib.axes._axes.Axes)\n\n\n\n\nhide_y_axes_label\n\n hide_y_axes_label\n                    (axes:matplotlib.axes._axes.Axes|list[matplotlib.axes.\n                    _axes.Axes])\n\n\n\n\nhide_x_axes_label\n\n hide_x_axes_label\n                    (axes:matplotlib.axes._axes.Axes|list[matplotlib.axes.\n                    _axes.Axes])\n\n\n\n\nhide_y_axis_label\n\n hide_y_axis_label (ax:matplotlib.axes._axes.Axes)\n\n\n\n\nhide_x_axis_label\n\n hide_x_axis_label (ax:matplotlib.axes._axes.Axes)",
     "crumbs": [
       "Utils for Matplotlib"
+    ]
+  },
+  {
+    "objectID": "03_io.html",
+    "href": "03_io.html",
+    "title": "IO utils",
+    "section": "",
+    "text": "FileIO.jl\n\nFileIO.jl/src/loadsave.jl at master · JuliaIO/FileIO.jl\n\nIntake\n\nintake/intake/readers/datatypes.py at master · intake/intake\nEasy loading and saving · Issue #819 · intake/intake\n\n\nReference:\n\n7. Input and Output — Python documentation\n\n\n\n\n\n\n action (func, file:pathlib.Path, *args, **kwargs)",
+    "crumbs": [
+      "IO utils"
+    ]
+  },
+  {
+    "objectID": "03_io.html#inspirations",
+    "href": "03_io.html#inspirations",
+    "title": "IO utils",
+    "section": "",
+    "text": "FileIO.jl\n\nFileIO.jl/src/loadsave.jl at master · JuliaIO/FileIO.jl\n\nIntake\n\nintake/intake/readers/datatypes.py at master · intake/intake\nEasy loading and saving · Issue #819 · intake/intake\n\n\nReference:\n\n7. Input and Output — Python documentation\n\n\n\n\n\n\n action (func, file:pathlib.Path, *args, **kwargs)",
+    "crumbs": [
+      "IO utils"
+    ]
+  },
+  {
+    "objectID": "03_io.html#test",
+    "href": "03_io.html#test",
+    "title": "IO utils",
+    "section": "Test",
+    "text": "Test\n\nfp = \"test/test.json\"\ndata = load(fp)",
+    "crumbs": [
+      "IO utils"
     ]
   },
   {
@@ -100,83 +170,13 @@
     ]
   },
   {
-    "objectID": "03_io.html",
-    "href": "03_io.html",
-    "title": "IO utils",
+    "objectID": "12_r.html",
+    "href": "12_r.html",
+    "title": "R utils",
     "section": "",
-    "text": "FileIO.jl\n\nFileIO.jl/src/loadsave.jl at master · JuliaIO/FileIO.jl\n\nIntake\n\nintake/intake/readers/datatypes.py at master · intake/intake\nEasy loading and saving · Issue #819 · intake/intake\n\n\nReference:\n\n7. Input and Output — Python documentation\n\n\n\n\n\n\n action (func, file:pathlib.Path, *args, **kwargs)",
+    "text": "Utils for using R with python in Jupyter\nYou need to install depending package with pip install rpy2 rpy2-arrow\nSee rpy2 for more details and rp2-arrow for arrow support.\nTODO: support polars LazyFrame.\n\n\npy2rpy_polars\n\n py2rpy_polars ()\n\nHelper functions to convert between polars and R dataframes\nHere is how you can use it, remember to load the extension first:\n%load_ext rpy2.ipython\nfrom ids_finder.utils.r import py2rpy_polars\nconv_pl = py2rpy_polars()\nThen you can use it like this to export a dataframe df to R:\n%R -i df -c conv_pl",
     "crumbs": [
-      "IO utils"
-    ]
-  },
-  {
-    "objectID": "03_io.html#inspirations",
-    "href": "03_io.html#inspirations",
-    "title": "IO utils",
-    "section": "",
-    "text": "FileIO.jl\n\nFileIO.jl/src/loadsave.jl at master · JuliaIO/FileIO.jl\n\nIntake\n\nintake/intake/readers/datatypes.py at master · intake/intake\nEasy loading and saving · Issue #819 · intake/intake\n\n\nReference:\n\n7. Input and Output — Python documentation\n\n\n\n\n\n\n action (func, file:pathlib.Path, *args, **kwargs)",
-    "crumbs": [
-      "IO utils"
-    ]
-  },
-  {
-    "objectID": "03_io.html#test",
-    "href": "03_io.html#test",
-    "title": "IO utils",
-    "section": "Test",
-    "text": "Test\n\nfp = \"test/test.json\"\ndata = load(fp)",
-    "crumbs": [
-      "IO utils"
-    ]
-  },
-  {
-    "objectID": "02_projects.html",
-    "href": "02_projects.html",
-    "title": "Scientific project utils",
-    "section": "",
-    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq",
-    "crumbs": [
-      "Scientific project utils"
-    ]
-  },
-  {
-    "objectID": "02_projects.html#inspirations",
-    "href": "02_projects.html#inspirations",
-    "title": "Scientific project utils",
-    "section": "",
-    "text": "DrWatson.jl\nsacred\n\n\n\nfrom fastcore.test import test_eq",
-    "crumbs": [
-      "Scientific project utils"
-    ]
-  },
-  {
-    "objectID": "02_projects.html#naming-tools",
-    "href": "02_projects.html#naming-tools",
-    "title": "Scientific project utils",
-    "section": "Naming Tools",
-    "text": "Naming Tools\n\n\nsavename\n\n savename (c:dict, prefix:str='', suffix:str='',\n           allowedtypes:Tuple=(&lt;class 'int'&gt;, &lt;class 'float'&gt;, &lt;class\n           'str'&gt;, &lt;class 'bool'&gt;, &lt;class 'datetime.timedelta'&gt;),\n           accesses:list[str]=[], ignores:list[str]=[], digits:int=None,\n           connector:str='_', equals:str='=', expand:list[str]=[],\n           sigdigits:int=3, val2string:Callable=None, sort:bool=True)\n\nCreate a shorthand name based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\ndict\n\nThe input dictionary containing the parameters.\n\n\nprefix\nstr\n\nThe prefix to start the name with.\n\n\nsuffix\nstr\n\nThe suffix to end the name with.\n\n\nallowedtypes\nTuple\n(&lt;class ‘int’&gt;, &lt;class ‘float’&gt;, &lt;class ‘str’&gt;, &lt;class ‘bool’&gt;, &lt;class ‘datetime.timedelta’&gt;)\nOnly values of these types are included. (default: (int, float, str, bool))\n\n\naccesses\nlist\n[]\nSpecific keys to include in the name.\n\n\nignores\nlist\n[]\nSpecific keys to ignore.\n\n\ndigits\nint\nNone\nNumber of decimal digits for rounding floats.\n\n\nconnector\nstr\n_\nString used to connect key-value pairs.\n\n\nequals\nstr\n=\nConnector between key and value.\n\n\nexpand\nlist\n[]\nKeys that will be expanded to their nested savename.\n\n\nsigdigits\nint\n3\nNumber of significant digits for rounding floats.\n\n\nval2string\nCallable\nNone\nFunction to convert values to strings.\n\n\nsort\nbool\nTrue\nWhether to sort the keys alphabetically.\n\n\nReturns\nstr\n\nThe generated shorthand name.\n\n\n\n\n# Examples\nd = {\"a\": 0.153456453, \"b\": 5, \"mode\": \"double\"}\ntest_eq(savename(d), \"a=0.153_b=5_mode=double\")\ntest_eq(savename(d, digits=4), \"a=0.1535_b=5_mode=double\")\ntest_eq(savename(d, prefix=\"n\"), \"n_a=0.153_b=5_mode=double\")\ntest_eq(savename(d, suffix=\"n\"), \"a=0.153_b=5_mode=double.n\")\ntest_eq(\n    savename(d, prefix=\"n\", suffix=\"n\", connector=\"-\"), \"n-a=0.153-b=5-mode=double.n\"\n)\ntest_eq(savename(d, allowedtypes=(str,)), \"mode=double\")\ntest_eq(savename(d, connector=\" | \", equals=\" = \"), \"a = 0.153 | b = 5 | mode = double\")\n\nrick = {\"never\": \"gonna\", \"give\": \"you\", \"up\": \"!\"}\ntest_eq(savename(rick), \"give=you_never=gonna_up=!\")\ntest_eq(savename(rick, ignores=[\"up\"]), \"give=you_never=gonna\")\n\n\n\n\nappend_prefix_suffix\n\n append_prefix_suffix (name:str, prefix:str, suffix:str)",
-    "crumbs": [
-      "Scientific project utils"
-    ]
-  },
-  {
-    "objectID": "02_projects.html#directory-tools",
-    "href": "02_projects.html#directory-tools",
-    "title": "Scientific project utils",
-    "section": "Directory tools",
-    "text": "Directory tools\n\n\ndatadir\n\n datadir ()\n\n\n\n\nprojectdir\n\n projectdir ()\n\n\n\n\nsetup_run_dir\n\n setup_run_dir (c:dict, base_dir:Callable=&lt;function datadir&gt;,\n                change_dir:bool=True, **kwargs)\n\nCreate a run directory based on the parameters in the dictionary c.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nc\ndict\n\nThe dictionary containing the parameters.\n\n\nbase_dir\nCallable\ndatadir\nThe base directory to create the run directory in.\n\n\nchange_dir\nbool\nTrue\n\n\n\nkwargs\n\n\n\n\n\nReturns\nPath\n\nThe run directory.",
-    "crumbs": [
-      "Scientific project utils"
-    ]
-  },
-  {
-    "objectID": "02_projects.html#saving-tools",
-    "href": "02_projects.html#saving-tools",
-    "title": "Scientific project utils",
-    "section": "Saving Tools",
-    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7ff2901236a0&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True, **kwargs)",
-    "crumbs": [
-      "Scientific project utils"
+      "`R` utils"
     ]
   }
 ]

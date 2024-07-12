@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.53">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -216,6 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#directory-tools" id="toc-directory-tools" class="nav-link" data-scroll-target="#directory-tools">Directory tools</a>
   <ul>
+  <li><a href="#plotsdir" id="toc-plotsdir" class="nav-link" data-scroll-target="#plotsdir">plotsdir</a></li>
   <li><a href="#datadir" id="toc-datadir" class="nav-link" data-scroll-target="#datadir">datadir</a></li>
   <li><a href="#projectdir" id="toc-projectdir" class="nav-link" data-scroll-target="#projectdir">projectdir</a></li>
   <li><a href="#setup_run_dir" id="toc-setup_run_dir" class="nav-link" data-scroll-target="#setup_run_dir">setup_run_dir</a></li>
@@ -408,10 +409,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="directory-tools" class="level2">
 <h2 class="anchored" data-anchor-id="directory-tools">Directory tools</h2>
 <hr>
+<section id="plotsdir" class="level3">
+<h3 class="anchored" data-anchor-id="plotsdir">plotsdir</h3>
+<blockquote class="blockquote">
+<pre><code> plotsdir (subdir='figures')</code></pre>
+</blockquote>
+<hr>
+</section>
 <section id="datadir" class="level3">
 <h3 class="anchored" data-anchor-id="datadir">datadir</h3>
 <blockquote class="blockquote">
-<pre><code> datadir ()</code></pre>
+<pre><code> datadir (subdir='data')</code></pre>
 </blockquote>
 <hr>
 </section>
@@ -486,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="safesave">safesave</h3>
 <blockquote class="blockquote">
 <pre><code> safesave (file:str, data, save_func:Callable=functools.partial(&lt;function
-           action at 0x7ff2901236a0&gt;, 'save'))</code></pre>
+           action at 0x7fd2711e27a0&gt;, 'save'))</code></pre>
 </blockquote>
 </section>
 <section id="produce-or-load" class="level3">
@@ -509,7 +517,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="produce_or_load_file">produce_or_load_file</h3>
 <blockquote class="blockquote">
 <pre><code> produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,
-                       force:bool=False, verbose:bool=True, **kwargs)</code></pre>
+                       force:bool=False, verbose:bool=True,
+                       load_func:Callable=functools.partial(&lt;function
+                       action at 0x7fd2711e27a0&gt;, 'load'),
+                       save_func:Callable=functools.partial(&lt;function
+                       action at 0x7fd2711e27a0&gt;, 'save'), **kwargs)</code></pre>
 </blockquote>
 
 
