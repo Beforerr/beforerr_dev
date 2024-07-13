@@ -10,3 +10,9 @@ jobs:
     uses: Beforerr/workflows/.github/workflows/pixi_nbdev.yml@main
     secrets: inherit
     permissions: { contents: write }
+  pypi-publish:
+    uses: Beforerr/workflows/.github/workflows/pypi_publish.yml@main
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      id-token: write
+      contents: write
