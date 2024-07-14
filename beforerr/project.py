@@ -242,7 +242,7 @@ def produce_or_load(
     force: bool = False,
     verbose: bool = True,
     action_kwargs: dict = {},
-    filename: Union[Callable, str] = None,
+    filename: Callable | str | None = None,
     **kwargs,
 ):
     if filename is None:

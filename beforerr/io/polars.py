@@ -5,7 +5,7 @@ from pydantic import validate_call
 
 
 @validate_call(config=dict(arbitrary_types_allowed=True))
-def save(file: Path, data: pl.DataFrame, clean: bool = True, **kwargs):
+def save(file: Path, data: pl.DataFrame, clean: bool = False, **kwargs):
     format = file.suffix[1:]
     # check the parent directory exists
     file.parent.mkdir(parents=True, exist_ok=True)

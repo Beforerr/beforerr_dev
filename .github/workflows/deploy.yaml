@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Publishing (GitHub Pages and PyPI)
 
 on:
   push:
