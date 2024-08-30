@@ -6,6 +6,7 @@ __all__ = ['load', 'save', 'action']
 # %% ../../nbs/03_io.ipynb 1
 from intake.readers.datatypes import recommend, JSONFile, PickleFile, Feather2
 import importlib
+import os
 from functools import partial
 from pydantic import validate_call
 from pathlib import Path
@@ -29,9 +30,10 @@ def query_datatype(file: str):
     See also `os.path.splitext(file)` to get the file extension
     """
     datatypes = recommend(file)
-    if JSONFile in datatypes:
+    ext = os.path.splitext(file)[1]
+    if JSONFile in datatypes or ext == ".json":
         return JSONFile
-    if Feather2 in datatypes:
+    if Feather2 in datatypes or ext == ".arrow":
         return Feather2
     else:
         return PickleFile

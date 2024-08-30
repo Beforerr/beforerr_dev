@@ -104,7 +104,7 @@ def decompose_vector(
     return df.with_columns(column_expressions)
 
 # %% ../nbs/10_polars.ipynb 10
-def format_time(df: pl.DataFrame, time_unit="ns"):
+def format_time(df: pl.DataFrame | pl.LazyFrame, time_unit="ns"):
     return df.with_columns(
         cs.datetime().dt.cast_time_unit(time_unit),
     )

@@ -32,12 +32,13 @@ source = "scm"
 channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64"]
 
+[tool.pixi.environments]
+default = ["r"]
+
 [tool.pixi.pypi-dependencies]
-beforerr = { path = ".", editable = true, extras = ["r"] }
+beforerr = { path = ".", editable = true }
 nbdev = "*"
 setuptools = "*"
-
-[tool.pixi.tasks]
 
 [tool.pixi.dependencies]
 matplotlib = "*"

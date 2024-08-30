@@ -246,7 +246,7 @@ def produce_or_load(
     **kwargs,
 ):
     if filename is None:
-        name = savename(prefix, config, suffix, **kwargs)
+        name = savename(config, **kwargs)
     elif callable(filename):
         name = filename(config)
     elif isinstance(filename, str):
@@ -254,7 +254,7 @@ def produce_or_load(
     else:
         raise ValueError("filename must be a callable or a string.")
 
-    name = append_prefix_suffix(filename, prefix, suffix)
+    name = append_prefix_suffix(name, prefix, suffix)
 
     file = path / name
 
