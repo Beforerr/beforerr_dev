@@ -184,13 +184,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes">Axes</a>
   <ul>
   <li><a href="#unify_axes_fontsize" id="toc-unify_axes_fontsize" class="nav-link" data-scroll-target="#unify_axes_fontsize">unify_axes_fontsize</a></li>
-  <li><a href="#hide_y_axes_label" id="toc-hide_y_axes_label" class="nav-link" data-scroll-target="#hide_y_axes_label">hide_y_axes_label</a></li>
-  <li><a href="#hide_x_axes_label" id="toc-hide_x_axes_label" class="nav-link" data-scroll-target="#hide_x_axes_label">hide_x_axes_label</a></li>
+  <li><a href="#hide_ylabels" id="toc-hide_ylabels" class="nav-link" data-scroll-target="#hide_ylabels">hide_ylabels</a></li>
+  <li><a href="#hide_xlabels" id="toc-hide_xlabels" class="nav-link" data-scroll-target="#hide_xlabels">hide_xlabels</a></li>
   </ul></li>
   <li><a href="#legends" id="toc-legends" class="nav-link" data-scroll-target="#legends">Legends</a>
   <ul>
   <li><a href="#hide_legend_lines" id="toc-hide_legend_lines" class="nav-link" data-scroll-target="#hide_legend_lines">hide_legend_lines</a></li>
-  <li><a href="#hide_legend" id="toc-hide_legend" class="nav-link" data-scroll-target="#hide_legend">hide_legend</a></li>
+  <li><a href="#hide_legends" id="toc-hide_legends" class="nav-link" data-scroll-target="#hide_legends">hide_legends</a></li>
   <li><a href="#sync_legend_colors" id="toc-sync_legend_colors" class="nav-link" data-scroll-target="#sync_legend_colors">sync_legend_colors</a></li>
   </ul></li>
   <li><a href="#pipelines" id="toc-pipelines" class="nav-link" data-scroll-target="#pipelines">Pipelines</a>
@@ -299,19 +299,19 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <hr>
 </section>
-<section id="hide_y_axes_label" class="level3">
-<h3 class="anchored" data-anchor-id="hide_y_axes_label">hide_y_axes_label</h3>
+<section id="hide_ylabels" class="level3">
+<h3 class="anchored" data-anchor-id="hide_ylabels">hide_ylabels</h3>
 <blockquote class="blockquote">
-<pre><code> hide_y_axes_label (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axe
-                    s|list[matplotlib.axes._axes.Axes]|None)</code></pre>
+<pre><code> hide_ylabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis
+               t[matplotlib.axes._axes.Axes]|None)</code></pre>
 </blockquote>
 <hr>
 </section>
-<section id="hide_x_axes_label" class="level3">
-<h3 class="anchored" data-anchor-id="hide_x_axes_label">hide_x_axes_label</h3>
+<section id="hide_xlabels" class="level3">
+<h3 class="anchored" data-anchor-id="hide_xlabels">hide_xlabels</h3>
 <blockquote class="blockquote">
-<pre><code> hide_x_axes_label (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axe
-                    s|list[matplotlib.axes._axes.Axes]|None)</code></pre>
+<pre><code> hide_xlabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis
+               t[matplotlib.axes._axes.Axes]|None)</code></pre>
 </blockquote>
 </section>
 </section>
@@ -327,12 +327,13 @@ ul.task-list li input[type="checkbox"] {
 <p><em>Hide legend lines on all axes.</em></p>
 <hr>
 </section>
-<section id="hide_legend" class="level3">
-<h3 class="anchored" data-anchor-id="hide_legend">hide_legend</h3>
+<section id="hide_legends" class="level3">
+<h3 class="anchored" data-anchor-id="hide_legends">hide_legends</h3>
 <blockquote class="blockquote">
-<pre><code> hide_legend (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|list
-              [matplotlib.axes._axes.Axes]|None)</code></pre>
+<pre><code> hide_legends (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis
+               t[matplotlib.axes._axes.Axes]|None)</code></pre>
 </blockquote>
+<p><em>Hide legends on all axes.</em></p>
 <hr>
 </section>
 <section id="sync_legend_colors" class="level3">
@@ -364,30 +365,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="plotopts" class="level3">
 <h3 class="anchored" data-anchor-id="plotopts">PlotOpts</h3>
 <blockquote class="blockquote">
-<pre><code> PlotOpts (sync_legend_colors:bool=False, hide_legend:bool=False,
-           hide_legend_lines:bool=False, hide_x_axes_label:bool=False,
-           hide_y_axes_label:bool=False)</code></pre>
+<pre><code> PlotOpts (sync_legend_colors:bool=False, hide_legends:bool=False,
+           hide_legend_lines:bool=False, hide_xlabels:bool=False,
+           hide_ylabels:bool=False)</code></pre>
 </blockquote>
-<p>*Usage docs: https://docs.pydantic.dev/2.9/concepts/models/</p>
-<p>A base class for creating Pydantic models.</p>
-<p>Attributes: <strong>class_vars</strong>: The names of the class variables defined on the model. <strong>private_attributes</strong>: Metadata about the private attributes of the model. <strong>signature</strong>: The synthesized <code>__init__</code> [<code>Signature</code>][inspect.Signature] of the model.</p>
-<pre><code>__pydantic_complete__: Whether model building is completed, or if there are still undefined fields.
-__pydantic_core_schema__: The core schema of the model.
-__pydantic_custom_init__: Whether the model has a custom `__init__` function.
-__pydantic_decorators__: Metadata containing the decorators defined on the model.
-    This replaces `Model.__validators__` and `Model.__root_validators__` from Pydantic V1.
-__pydantic_generic_metadata__: Metadata for generic models; contains data used for a similar purpose to
-    __args__, __origin__, __parameters__ in typing-module generics. May eventually be replaced by these.
-__pydantic_parent_namespace__: Parent namespace of the model, used for automatic rebuilding of models.
-__pydantic_post_init__: The name of the post-init method for the model, if defined.
-__pydantic_root_model__: Whether the model is a [`RootModel`][pydantic.root_model.RootModel].
-__pydantic_serializer__: The `pydantic-core` `SchemaSerializer` used to dump instances of the model.
-__pydantic_validator__: The `pydantic-core` `SchemaValidator` used to validate instances of the model.
-
-__pydantic_extra__: A dictionary containing extra values, if [`extra`][pydantic.config.ConfigDict.extra]
-    is set to `'allow'`.
-__pydantic_fields_set__: The names of fields explicitly set during instantiation.
-__pydantic_private__: Values of private attributes set on the model instance.*</code></pre>
+<p><em>Options to apply to a matplotlib object.</em></p>
 
 
 </section>
