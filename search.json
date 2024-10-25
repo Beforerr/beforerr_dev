@@ -44,7 +44,7 @@
     "href": "02_projects.html#saving-tools",
     "title": "Scientific project utils",
     "section": "Saving Tools",
-    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7f88280cbc40&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str,NoneType]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True,\n                       load_func:Callable=functools.partial(&lt;function\n                       action at 0x7f88280cbc40&gt;, 'load'),\n                       save_func:Callable=functools.partial(&lt;function\n                       action at 0x7f88280cbc40&gt;, 'save'), **kwargs)",
+    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7f0842c37560&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str,NoneType]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True,\n                       load_func:Callable=functools.partial(&lt;function\n                       action at 0x7f0842c37560&gt;, 'load'),\n                       save_func:Callable=functools.partial(&lt;function\n                       action at 0x7f0842c37560&gt;, 'save'), **kwargs)",
     "crumbs": [
       "Scientific project utils"
     ]
@@ -204,7 +204,7 @@
     "href": "11_matplotlib.html#pipelines",
     "title": "Utils for Matplotlib",
     "section": "Pipelines",
-    "text": "Pipelines\n\n\nupdate_rcParams\n\n update_rcParams (plot_opts:__main__.PlotOpts)\n\n\n\n\nprocess_figure\n\n process_figure (obj, plot_opts:__main__.PlotOpts, **kwargs)\n\n\n\n\nPlotOpts\n\n PlotOpts (sync_legend_colors:bool=False, hide_legends:bool=False,\n           hide_legend_lines:bool=False, hide_xlabels:bool=False,\n           hide_ylabels:bool=False)\n\nOptions to apply to a matplotlib object.",
+    "text": "Pipelines\n\n\nupdate_rcParams\n\n update_rcParams (plot_opts:__main__.PlotOpts)\n\n\n\n\nprocess_figure\n\n process_figure (obj, plot_opts:pydantic.main.BaseModel, **kwargs)\n\n\n\n\nPlotOpts\n\n PlotOpts (sync_legend_colors:bool=False, hide_legends:bool=False,\n           hide_legend_lines:bool=False, hide_xlabels:bool=False,\n           hide_ylabels:bool=False)\n\nOptions to apply to a matplotlib object.",
     "crumbs": [
       "Utils for Matplotlib"
     ]
