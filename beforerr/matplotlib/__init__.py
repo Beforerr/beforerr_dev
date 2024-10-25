@@ -2,8 +2,8 @@
 
 # %% auto 0
 __all__ = ['PlotObject', 'module_path', 'styles_path', 'stylesheets', 'get_axes', 'func2axes', 'func2legend', 'easy_save',
-           'unify_axis_fontsize', 'unify_axes_fontsize', 'hide_x_axes_label', 'hide_y_axes_label', 'sync_legend_colors',
-           'hide_legend', 'hide_legend_lines', 'PlotOpts', 'process_figure', 'update_rcParams']
+           'unify_axis_fontsize', 'unify_axes_fontsize', 'hide_xlabels', 'hide_ylabels', 'sync_legend_colors',
+           'hide_legends', 'hide_legend_lines', 'PlotOpts', 'process_figure', 'update_rcParams']
 
 # %% ../../nbs/11_matplotlib.ipynb 1
 import matplotlib.pyplot as plt
@@ -93,16 +93,15 @@ def _hide_y_axis_label(ax: Axes):
     ax.set_ylabel(None)
 
 
-def hide_x_axes_label(obj: PlotObject):
+def hide_xlabels(obj: PlotObject):
     func2axes(obj, _hide_x_axis_label)
 
 
-def hide_y_axes_label(obj: PlotObject):
+def hide_ylabels(obj: PlotObject):
     func2axes(obj, _hide_y_axis_label)
 
 # %% ../../nbs/11_matplotlib.ipynb 11
 def _sync_legend_colors(legend: Legend):
-    """Synchronize legend text colors with their corresponding line colors."""
     for line, text in zip(legend.get_lines(), legend.get_texts()):
         text.set_color(line.get_color())
 
@@ -114,9 +113,11 @@ def sync_legend_colors(obj: PlotObject):
 
 def _hide_legend(legend: Legend):
     legend.set_visible(False)
+    legend.remove()
 
 
-def hide_legend(obj: PlotObject):
+def hide_legends(obj: PlotObject):
+    """Hide legends on all axes."""
     func2legend(obj, _hide_legend)
 
 
@@ -132,11 +133,13 @@ def hide_legend_lines(obj: PlotObject):
 
 # %% ../../nbs/11_matplotlib.ipynb 13
 class PlotOpts(BaseModel):
+    """Options to apply to a matplotlib object."""
+
     sync_legend_colors: bool = False
-    hide_legend: bool = False
+    hide_legends: bool = False
     hide_legend_lines: bool = False
-    hide_x_axes_label: bool = False
-    hide_y_axes_label: bool = False
+    hide_xlabels: bool = False
+    hide_ylabels: bool = False
 
     def model_post_init(self, __context):
         update_rcParams(self)
