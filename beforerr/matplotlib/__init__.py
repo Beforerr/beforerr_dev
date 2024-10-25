@@ -145,9 +145,11 @@ class PlotOpts(BaseModel):
         update_rcParams(self)
         return super().model_post_init(__context)
 
+    def process_figure(self, obj, **kwargs):
+        return process_figure(obj, self, **kwargs)
 
-def process_figure(obj, plot_opts: PlotOpts, **kwargs):
-    # plot_opts.sync_legend_colors and sync_legend_colors(fig)
+
+def process_figure(obj, plot_opts: BaseModel, **kwargs):
     for key, value in plot_opts.model_dump().items():
         # Get a reference to the current module function
         func = getattr(sys.modules[__name__], key)
