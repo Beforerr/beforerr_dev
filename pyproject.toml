@@ -20,6 +20,7 @@ build-backend = "pdm.backend"
 
 [project.optional-dependencies]
 r = ["rpy2", "rpy2_arrow"]
+dev = ["nbdev", "ipykernel"]
 
 [project.urls]
 Homepage = "https://beforerr.github.io/beforerr_dev"
@@ -33,16 +34,14 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64"]
 
 [tool.pixi.environments]
-default = ["r"]
+default = ["dev", "r"]
 
 [tool.pixi.pypi-dependencies]
 beforerr = { path = ".", editable = true }
-nbdev = "*"
 setuptools = "*"
 
 [tool.pixi.dependencies]
 matplotlib = "*"
-ipykernel = "*"
 polars = "*"
 r-base = "*"
 r-arrow = "*"
