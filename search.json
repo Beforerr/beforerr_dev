@@ -44,7 +44,7 @@
     "href": "02_projects.html#saving-tools",
     "title": "Scientific project utils",
     "section": "Saving Tools",
-    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7f5db6432b60&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str,NoneType]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True,\n                       load_func:Callable=functools.partial(&lt;function\n                       action at 0x7f5db6432b60&gt;, 'load'),\n                       save_func:Callable=functools.partial(&lt;function\n                       action at 0x7f5db6432b60&gt;, 'save'), **kwargs)",
+    "text": "Saving Tools\n\n\nsafesave\n\n safesave (file:str, data, save_func:Callable=functools.partial(&lt;function\n           action at 0x7fe756b5ede0&gt;, 'save'))\n\n\n\nProduce or Load\nProduce or Load - DrWatson.jl\n\n\n\nproduce_or_load\n\n produce_or_load (f:Callable, config:dict={}, path:pathlib.Path=Path('/hom\n                  e/runner/work/beforerr_dev/beforerr_dev/data'),\n                  suffix:str='pickle', prefix:str=None, force:bool=False,\n                  verbose:bool=True, action_kwargs:dict={},\n                  filename:Union[Callable,str,NoneType]=None, **kwargs)\n\n\n\n\nproduce_or_load_file\n\n produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,\n                       force:bool=False, verbose:bool=True,\n                       load_func:Callable=functools.partial(&lt;function\n                       action at 0x7fe756b5ede0&gt;, 'load'),\n                       save_func:Callable=functools.partial(&lt;function\n                       action at 0x7fe756b5ede0&gt;, 'save'), **kwargs)",
     "crumbs": [
       "Scientific project utils"
     ]
@@ -170,8 +170,8 @@
     ]
   },
   {
-    "objectID": "11_matplotlib.html#saving",
-    "href": "11_matplotlib.html#saving",
+    "objectID": "matplotlib.html#saving",
+    "href": "matplotlib.html#saving",
     "title": "Utils for Matplotlib",
     "section": "Saving",
     "text": "Saving\n\n\neasy_save\n\n easy_save (name:str, fig:matplotlib.figure.Figure=None, formats=['svg'],\n            dir=Path('/home/runner/work/beforerr_dev/beforerr_dev/figures'\n            ), **kwargs)",
@@ -180,28 +180,28 @@
     ]
   },
   {
-    "objectID": "11_matplotlib.html#axes",
-    "href": "11_matplotlib.html#axes",
+    "objectID": "matplotlib.html#axes",
+    "href": "matplotlib.html#axes",
     "title": "Utils for Matplotlib",
     "section": "Axes",
-    "text": "Axes\n\n\nunify_axes_fontsize\n\n unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\naxes\nAxes\n\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\n\n\n\n\n\n\n\nhide_ylabels\n\n hide_ylabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis\n               t[matplotlib.axes._axes.Axes]|None)\n\n\n\n\nhide_xlabels\n\n hide_xlabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis\n               t[matplotlib.axes._axes.Axes]|None)",
+    "text": "Axes\n\n\nunify_axes_fontsize\n\n unify_axes_fontsize (obj:matplotlib.figure.Figure|matplotlib.axes._axes.A\n                      xes|list[matplotlib.axes._axes.Axes]|None=None,\n                      fontsize:str|float='medium')\n\nSet the fontsize of all text elements in a matplotlib axis to the same value.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nobj\nmatplotlib.figure.Figure | matplotlib.axes._axes.Axes | list[matplotlib.axes._axes.Axes] | None\nNone\na single axis or a list of axes\n\n\nfontsize\nstr | float\nmedium\n\n\n\n\n\n\n\ncreate_legends\n\n create_legends (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|l\n                 ist[matplotlib.axes._axes.Axes]|None=None, **kwargs)\n\n\n\n\nhide_ylabels\n\n hide_ylabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis\n               t[matplotlib.axes._axes.Axes]|None=None)\n\n\n\n\nhide_xlabels\n\n hide_xlabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis\n               t[matplotlib.axes._axes.Axes]|None=None)\n\n\n\nLines\n\n\n\nset_linewidth\n\n set_linewidth (w, obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes\n                |list[matplotlib.axes._axes.Axes]|None=None)",
     "crumbs": [
       "Utils for Matplotlib"
     ]
   },
   {
-    "objectID": "11_matplotlib.html#legends",
-    "href": "11_matplotlib.html#legends",
+    "objectID": "matplotlib.html#legends",
+    "href": "matplotlib.html#legends",
     "title": "Utils for Matplotlib",
     "section": "Legends",
-    "text": "Legends\n\n\nhide_legend_lines\n\n hide_legend_lines (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axe\n                    s|list[matplotlib.axes._axes.Axes]|None)\n\nHide legend lines on all axes.\n\n\n\nhide_legends\n\n hide_legends (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis\n               t[matplotlib.axes._axes.Axes]|None)\n\nHide legends on all axes.\n\n\n\nsync_legend_colors\n\n sync_legend_colors (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Ax\n                     es|list[matplotlib.axes._axes.Axes]|None)\n\nSynchronize legend text colors with their corresponding line colors.",
+    "text": "Legends\n\n\nhide_legend_lines\n\n hide_legend_lines (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axe\n                    s|list[matplotlib.axes._axes.Axes]|None=None)\n\nHide legend lines on all axes.\n\n\n\nhide_legends\n\n hide_legends (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis\n               t[matplotlib.axes._axes.Axes]|None=None)\n\nHide legends on all axes.\n\n\n\nsync_legend_colors\n\n sync_legend_colors (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Ax\n                     es|list[matplotlib.axes._axes.Axes]|None=None)\n\nSynchronize legend text colors with their corresponding line colors.",
     "crumbs": [
       "Utils for Matplotlib"
     ]
   },
   {
-    "objectID": "11_matplotlib.html#pipelines",
-    "href": "11_matplotlib.html#pipelines",
+    "objectID": "matplotlib.html#pipelines",
+    "href": "matplotlib.html#pipelines",
     "title": "Utils for Matplotlib",
     "section": "Pipelines",
     "text": "Pipelines\n\n\nupdate_rcParams\n\n update_rcParams (plot_opts:__main__.PlotOpts)\n\n\n\n\nprocess_figure\n\n process_figure (obj, plot_opts:pydantic.main.BaseModel, **kwargs)\n\n\n\n\nPlotOpts\n\n PlotOpts (sync_legend_colors:bool=False, hide_legends:bool=False,\n           hide_legend_lines:bool=False, hide_xlabels:bool=False,\n           hide_ylabels:bool=False)\n\nOptions to apply to a matplotlib object.",

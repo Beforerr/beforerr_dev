@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_matplotlib.html">Utils for Matplotlib</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matplotlib.html">Utils for Matplotlib</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -154,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_matplotlib.html" class="sidebar-item-text sidebar-link active">
+  <a href="./matplotlib.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Utils for Matplotlib</span></a>
   </div>
 </li>
@@ -175,8 +175,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#func2legend" id="toc-func2legend" class="nav-link active" data-scroll-target="#func2legend">func2legend</a></li>
+  <li><a href="#func2lines" id="toc-func2lines" class="nav-link" data-scroll-target="#func2lines">func2lines</a></li>
   <li><a href="#func2axes" id="toc-func2axes" class="nav-link" data-scroll-target="#func2axes">func2axes</a></li>
   <li><a href="#get_axes" id="toc-get_axes" class="nav-link" data-scroll-target="#get_axes">get_axes</a></li>
+  <li><a href="#figsize" id="toc-figsize" class="nav-link" data-scroll-target="#figsize">figsize</a></li>
   <li><a href="#saving" id="toc-saving" class="nav-link" data-scroll-target="#saving">Saving</a>
   <ul>
   <li><a href="#easy_save" id="toc-easy_save" class="nav-link" data-scroll-target="#easy_save">easy_save</a></li>
@@ -184,8 +186,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes">Axes</a>
   <ul>
   <li><a href="#unify_axes_fontsize" id="toc-unify_axes_fontsize" class="nav-link" data-scroll-target="#unify_axes_fontsize">unify_axes_fontsize</a></li>
+  <li><a href="#create_legends" id="toc-create_legends" class="nav-link" data-scroll-target="#create_legends">create_legends</a></li>
   <li><a href="#hide_ylabels" id="toc-hide_ylabels" class="nav-link" data-scroll-target="#hide_ylabels">hide_ylabels</a></li>
   <li><a href="#hide_xlabels" id="toc-hide_xlabels" class="nav-link" data-scroll-target="#hide_xlabels">hide_xlabels</a></li>
+  <li><a href="#lines" id="toc-lines" class="nav-link" data-scroll-target="#lines">Lines</a></li>
+  <li><a href="#set_linewidth" id="toc-set_linewidth" class="nav-link" data-scroll-target="#set_linewidth">set_linewidth</a></li>
   </ul></li>
   <li><a href="#legends" id="toc-legends" class="nav-link" data-scroll-target="#legends">Legends</a>
   <ul>
@@ -235,6 +240,15 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <hr>
 </section>
+<section id="func2lines" class="level3">
+<h3 class="anchored" data-anchor-id="func2lines">func2lines</h3>
+<blockquote class="blockquote">
+<pre><code> func2lines (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|list[
+             matplotlib.axes._axes.Axes]|None, func:Callable, *args,
+             **kwargs)</code></pre>
+</blockquote>
+<hr>
+</section>
 <section id="func2axes" class="level3">
 <h3 class="anchored" data-anchor-id="func2axes">func2axes</h3>
 <blockquote class="blockquote">
@@ -250,6 +264,50 @@ ul.task-list li input[type="checkbox"] {
 <pre><code> get_axes (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|list[ma
            tplotlib.axes._axes.Axes]|None)</code></pre>
 </blockquote>
+<hr>
+</section>
+<section id="figsize" class="level3">
+<h3 class="anchored" data-anchor-id="figsize">figsize</h3>
+<blockquote class="blockquote">
+<pre><code> figsize (col=1, width:float=None, height:float=None, ratio:float=None)</code></pre>
+</blockquote>
+<p><em>Return figure size for a given height and column width for publication.</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>col</td>
+<td>int</td>
+<td>1</td>
+<td>Number of columns the figure spans.</td>
+</tr>
+<tr class="even">
+<td>width</td>
+<td>float</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>height</td>
+<td>float</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ratio</td>
+<td>float</td>
+<td>None</td>
+<td>Aspect ratio of the figure (height/width).</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="saving" class="level2">
 <h2 class="anchored" data-anchor-id="saving">Saving</h2>
@@ -269,11 +327,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="unify_axes_fontsize" class="level3">
 <h3 class="anchored" data-anchor-id="unify_axes_fontsize">unify_axes_fontsize</h3>
 <blockquote class="blockquote">
-<pre><code> unify_axes_fontsize (axes:matplotlib.axes._axes.Axes,
+<pre><code> unify_axes_fontsize (obj:matplotlib.figure.Figure|matplotlib.axes._axes.A
+                      xes|list[matplotlib.axes._axes.Axes]|None=None,
                       fontsize:str|float='medium')</code></pre>
 </blockquote>
 <p><em>Set the fontsize of all text elements in a matplotlib axis to the same value.</em></p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
 <thead>
 <tr class="header">
 <th></th>
@@ -284,9 +349,9 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>axes</td>
-<td>Axes</td>
-<td></td>
+<td>obj</td>
+<td>matplotlib.figure.Figure | matplotlib.axes._axes.Axes | list[matplotlib.axes._axes.Axes] | None</td>
+<td>None</td>
 <td>a single axis or a list of axes</td>
 </tr>
 <tr class="even">
@@ -299,11 +364,19 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <hr>
 </section>
+<section id="create_legends" class="level3">
+<h3 class="anchored" data-anchor-id="create_legends">create_legends</h3>
+<blockquote class="blockquote">
+<pre><code> create_legends (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|l
+                 ist[matplotlib.axes._axes.Axes]|None=None, **kwargs)</code></pre>
+</blockquote>
+<hr>
+</section>
 <section id="hide_ylabels" class="level3">
 <h3 class="anchored" data-anchor-id="hide_ylabels">hide_ylabels</h3>
 <blockquote class="blockquote">
 <pre><code> hide_ylabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis
-               t[matplotlib.axes._axes.Axes]|None)</code></pre>
+               t[matplotlib.axes._axes.Axes]|None=None)</code></pre>
 </blockquote>
 <hr>
 </section>
@@ -311,7 +384,18 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="hide_xlabels">hide_xlabels</h3>
 <blockquote class="blockquote">
 <pre><code> hide_xlabels (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis
-               t[matplotlib.axes._axes.Axes]|None)</code></pre>
+               t[matplotlib.axes._axes.Axes]|None=None)</code></pre>
+</blockquote>
+</section>
+<section id="lines" class="level3">
+<h3 class="anchored" data-anchor-id="lines">Lines</h3>
+<hr>
+</section>
+<section id="set_linewidth" class="level3">
+<h3 class="anchored" data-anchor-id="set_linewidth">set_linewidth</h3>
+<blockquote class="blockquote">
+<pre><code> set_linewidth (w, obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes
+                |list[matplotlib.axes._axes.Axes]|None=None)</code></pre>
 </blockquote>
 </section>
 </section>
@@ -322,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="hide_legend_lines">hide_legend_lines</h3>
 <blockquote class="blockquote">
 <pre><code> hide_legend_lines (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axe
-                    s|list[matplotlib.axes._axes.Axes]|None)</code></pre>
+                    s|list[matplotlib.axes._axes.Axes]|None=None)</code></pre>
 </blockquote>
 <p><em>Hide legend lines on all axes.</em></p>
 <hr>
@@ -331,7 +415,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="hide_legends">hide_legends</h3>
 <blockquote class="blockquote">
 <pre><code> hide_legends (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Axes|lis
-               t[matplotlib.axes._axes.Axes]|None)</code></pre>
+               t[matplotlib.axes._axes.Axes]|None=None)</code></pre>
 </blockquote>
 <p><em>Hide legends on all axes.</em></p>
 <hr>
@@ -340,7 +424,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="sync_legend_colors">sync_legend_colors</h3>
 <blockquote class="blockquote">
 <pre><code> sync_legend_colors (obj:matplotlib.figure.Figure|matplotlib.axes._axes.Ax
-                     es|list[matplotlib.axes._axes.Axes]|None)</code></pre>
+                     es|list[matplotlib.axes._axes.Axes]|None=None)</code></pre>
 </blockquote>
 <p><em>Synchronize legend text colors with their corresponding line colors.</em></p>
 </section>
