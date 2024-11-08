@@ -7,7 +7,7 @@ __all__ = ['convert_to_pd_dataframe', 'sort', 'pl_norm', 'decompose_vector', 'fo
 # %% ../../nbs/10_polars.ipynb 2
 import polars as pl
 import polars.selectors as cs
-from typing import Any, Collection
+from typing import Collection
 
 # %% ../../nbs/10_polars.ipynb 4
 def convert_to_pd_dataframe(
@@ -33,39 +33,31 @@ def sort(df: pl.DataFrame, col="time"):
         return df.sort(col)
 
 # %% ../../nbs/10_polars.ipynb 7
-def _expand_selectors(items: Any, *more_items: Any) -> list[Any]:
-    """
-    See `_expand_selectors` in `polars`.
-    """
-    expanded: list[Any] = []
-    for item in (
-        *(
-            items
-            if isinstance(items, Collection) and not isinstance(items, str)
-            else [items]
-        ),
-        *more_items,
-    ):
-        expanded.append(item)
+def expand_collections(*items, exclude_types=(str,)):
+    expanded: list = []
+    for item in items:
+        if isinstance(item, Collection) and not isinstance(item, *exclude_types):
+            expanded.extend(item)
+        else:
+            expanded.append(item)
     return expanded
 
-# %% ../../nbs/10_polars.ipynb 8
-def pl_norm(columns, *more_columns) -> pl.Expr:
+# %% ../../nbs/10_polars.ipynb 9
+def pl_norm(*columns: str | pl.Expr) -> pl.Expr:
     """
     Computes the square root of the sum of squares for the given columns.
 
     Args:
-    *columns (str): Names of the columns.
+    columns (str): Names of the columns.
 
     Returns:
     pl.Expr: Expression representing the square root of the sum of squares.
     """
-    all_columns = _expand_selectors(columns, *more_columns)
-    squares = [pl.col(column).pow(2) for column in all_columns]
+    all_columns = expand_collections(*columns)
+    all_columns = [pl.col(c) if isinstance(c, str) else c for c in all_columns]
+    return sum(c.pow(2) for c in all_columns).sqrt()
 
-    return sum(squares).sqrt()
-
-# %% ../../nbs/10_polars.ipynb 9
+# %% ../../nbs/10_polars.ipynb 10
 def decompose_vector(
     df: pl.DataFrame, vector_col, name=None, suffixes: list = ["_x", "_y", "_z"]
 ):
@@ -103,13 +95,13 @@ def decompose_vector(
 
     return df.with_columns(column_expressions)
 
-# %% ../../nbs/10_polars.ipynb 10
+# %% ../../nbs/10_polars.ipynb 11
 def format_time(df: pl.DataFrame | pl.LazyFrame, time_unit="ns"):
     return df.with_columns(
         cs.datetime().dt.cast_time_unit(time_unit),
     )
 
-# %% ../../nbs/10_polars.ipynb 12
+# %% ../../nbs/10_polars.ipynb 13
 def filter_series_by_ranges_i(data: pl.Series, starts: list, stops: list):
     starts_index = data.search_sorted(starts)
     ends_index = data.search_sorted(stops, side="right")
