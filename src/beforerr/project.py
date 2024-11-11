@@ -46,11 +46,11 @@ DEFAULT_ALLOWEDTYPES = (int, float, str, bool)
 
 
 def savename(
-    c: dict,
+    params: dict,
     prefix: str = "",
     suffix: str = "",
     allowedtypes: Tuple = DEFAULT_ALLOWEDTYPES,
-    accesses: list[str] = [],
+    accesses: list[str] = None,
     ignores: list[str] = [],
     connector: str = "_",
     equals: str = "=",
@@ -63,7 +63,7 @@ def savename(
 
     Parameters
     ----------
-    c : Dict
+    params : Dict
         The input dictionary containing the parameters.
     prefix : str, optional
         The prefix to start the name with.
@@ -99,45 +99,35 @@ def savename(
             "The recommended way is using `os.path.join` with `savename` (e.g. `os.path.join(datadir, savename(prefix, data))`)."
         )
 
-    labels = accesses or list(c.keys())
-    p = (
-        sorted(range(len(labels)), key=lambda k: labels[k])
-        if sort
-        else range(len(labels))
-    )
+    accesses = accesses or list(params.keys())
+    labels = [
+        label
+        for label in accesses
+        if label not in ignores and isinstance(params[label], allowedtypes)
+    ]
+    sort and labels.sort()
 
-    first = not prefix or prefix.endswith(os.path.sep)
-    s = prefix
-    for j in p:
-        label = labels[j]
-        if label in ignores:
-            continue
-        val = c[label]
-        t = type(val)
-        if any(issubclass(t, x) for x in allowedtypes):
-            if label in expand:
-                if not val:
-                    continue
-                sname = savename(
-                    val,
-                    connector=",",
-                    equals=equals,
-                    val2string=val2string,
-                )
-                if not sname:
-                    continue
-                entry = f"{label}{equals}({sname})"
-            else:
-                entry = f"{label}{equals}{val2string(val)}"
-            if not first:
-                s += connector
-            s += entry
-            first = False
+    name_parts = [prefix] if prefix else []
+    for label in labels:
+        val = params[label]
+        if label in expand:
+            nested_name = savename(
+                val,
+                connector=",",
+                equals=equals,
+                val2string=val2string,
+                allowedtypes=allowedtypes,
+            )
+            if nested_name:
+                name_parts.append(f"{label}{equals}({nested_name})")
+        else:
+            name_parts.append(f"{label}{equals}{val2string(val)}")
 
+    name = connector.join(name_parts)
     if suffix:
-        s += f".{suffix}"
+        name += f".{suffix}"
 
-    return s
+    return name
 
 # %% ../../nbs/02_projects.ipynb 8
 def append_prefix_suffix(name: str, prefix: str, suffix: str):
