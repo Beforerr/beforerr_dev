@@ -279,9 +279,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="savename" class="level3">
 <h3 class="anchored" data-anchor-id="savename">savename</h3>
 <blockquote class="blockquote">
-<pre><code> savename (c:dict, prefix:str='', suffix:str='',
+<pre><code> savename (params:dict, prefix:str='', suffix:str='',
            allowedtypes:Tuple=(&lt;class 'int'&gt;, &lt;class 'float'&gt;, &lt;class
-           'str'&gt;, &lt;class 'bool'&gt;), accesses:list[str]=[],
+           'str'&gt;, &lt;class 'bool'&gt;), accesses:list[str]=None,
            ignores:list[str]=[], connector:str='_', equals:str='=',
            expand:list[str]=[], val2string:Callable=&lt;multiple-dispatch
            function valtostring (with 0 registered and 3 pending
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>c</td>
+<td>params</td>
 <td>dict</td>
 <td></td>
 <td>The input dictionary containing the parameters.</td>
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>accesses</td>
 <td>list</td>
-<td>[]</td>
+<td>None</td>
 <td>Specific keys to include in the name.</td>
 </tr>
 <tr class="even">
@@ -379,25 +379,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <div id="cell-6" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">"a"</span>: <span class="fl">0.153456453</span>, <span class="st">"b"</span>: <span class="dv">5</span>, <span class="st">"mode"</span>: <span class="st">"double"</span>}</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>test_eq(savename(d), <span class="st">"a=0.15_b=5_mode=double"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>test_eq(savename(d, prefix<span class="op">=</span><span class="st">"n"</span>), <span class="st">"n_a=0.15_b=5_mode=double"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>test_eq(savename(d, suffix<span class="op">=</span><span class="st">"n"</span>), <span class="st">"a=0.15_b=5_mode=double.n"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>test_eq(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    savename(d, prefix<span class="op">=</span><span class="st">"n"</span>, suffix<span class="op">=</span><span class="st">"n"</span>, connector<span class="op">=</span><span class="st">"-"</span>), <span class="st">"n-a=0.15-b=5-mode=double.n"</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>test_eq(savename(d, allowedtypes<span class="op">=</span>(<span class="bu">str</span>,)), <span class="st">"mode=double"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>test_eq(savename(d, connector<span class="op">=</span><span class="st">" | "</span>, equals<span class="op">=</span><span class="st">" = "</span>), <span class="st">"a = 0.15 | b = 5 | mode = double"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>rick <span class="op">=</span> {<span class="st">"never"</span>: <span class="st">"gonna"</span>, <span class="st">"give"</span>: <span class="st">"you"</span>, <span class="st">"up"</span>: <span class="st">"!"</span>}</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>test_eq(savename(rick), <span class="st">"give=you_never=gonna_up=!"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>test_eq(savename(rick, ignores<span class="op">=</span>[<span class="st">"up"</span>]), <span class="st">"give=you_never=gonna"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>nested_dict <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: {<span class="st">"c"</span>: <span class="dv">2</span>, <span class="st">"d"</span>: <span class="dv">3</span>}}</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>test_eq(</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    savename(nested_dict, allowedtypes<span class="op">=</span>(<span class="bu">int</span>, <span class="bu">dict</span>), expand<span class="op">=</span>[<span class="st">"b"</span>]), <span class="st">"a=1_b=(c=2,d=3)"</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test savename</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_savename():</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> {<span class="st">"a"</span>: <span class="fl">0.153456453</span>, <span class="st">"b"</span>: <span class="dv">5</span>, <span class="st">"mode"</span>: <span class="st">"double"</span>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    test_eq(savename(d), <span class="st">"a=0.15_b=5_mode=double"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    test_eq(savename(d, prefix<span class="op">=</span><span class="st">"n"</span>), <span class="st">"n_a=0.15_b=5_mode=double"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    test_eq(savename(d, suffix<span class="op">=</span><span class="st">"n"</span>), <span class="st">"a=0.15_b=5_mode=double.n"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    test_eq(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        savename(d, prefix<span class="op">=</span><span class="st">"n"</span>, suffix<span class="op">=</span><span class="st">"n"</span>, connector<span class="op">=</span><span class="st">"-"</span>), <span class="st">"n-a=0.15-b=5-mode=double.n"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    test_eq(savename(d, allowedtypes<span class="op">=</span>(<span class="bu">str</span>,)), <span class="st">"mode=double"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    test_eq(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        savename(d, connector<span class="op">=</span><span class="st">" | "</span>, equals<span class="op">=</span><span class="st">" = "</span>), <span class="st">"a = 0.15 | b = 5 | mode = double"</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    rick <span class="op">=</span> {<span class="st">"never"</span>: <span class="st">"gonna"</span>, <span class="st">"give"</span>: <span class="st">"you"</span>, <span class="st">"up"</span>: <span class="st">"!"</span>}</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    test_eq(savename(rick), <span class="st">"give=you_never=gonna_up=!"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    test_eq(savename(rick, ignores<span class="op">=</span>[<span class="st">"up"</span>]), <span class="st">"give=you_never=gonna"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    nested_dict <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: {<span class="st">"c"</span>: <span class="dv">2</span>, <span class="st">"d"</span>: <span class="dv">3</span>}}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    test_eq(</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        savename(nested_dict, allowedtypes<span class="op">=</span>(<span class="bu">int</span>, <span class="bu">dict</span>), expand<span class="op">=</span>[<span class="st">"b"</span>]), <span class="st">"a=1_b=(c=2,d=3)"</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>test_savename()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -496,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="safesave">safesave</h3>
 <blockquote class="blockquote">
 <pre><code> safesave (file:str, data, save_func:Callable=functools.partial(&lt;function
-           action at 0x7f62f269f560&gt;, 'save'))</code></pre>
+           action at 0x7f6502c87b00&gt;, 'save'))</code></pre>
 </blockquote>
 </section>
 <section id="produce-or-load" class="level3">
@@ -521,9 +527,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code> produce_or_load_file (f:Callable, config:dict, file:pathlib.Path,
                        force:bool=False, verbose:bool=True,
                        load_func:Callable=functools.partial(&lt;function
-                       action at 0x7f62f269f560&gt;, 'load'),
+                       action at 0x7f6502c87b00&gt;, 'load'),
                        save_func:Callable=functools.partial(&lt;function
-                       action at 0x7f62f269f560&gt;, 'save'), **kwargs)</code></pre>
+                       action at 0x7f6502c87b00&gt;, 'save'), **kwargs)</code></pre>
 </blockquote>
 
 
